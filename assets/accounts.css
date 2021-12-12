@@ -1,0 +1,129 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #03a9f4;
+    transition: 0.5s;
+}
+body.active{
+    background:#f43648 ;
+}
+.container{
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin:20px;
+}
+.blueBg{
+    position: absolute;
+    top:40px;
+    width:100%;
+    height:420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+}
+
+.blueBg .box{
+    position: relative;
+    width: 50%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.blueBg .box h2{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight:500;
+    margin-bottom: 10px;
+}
+.signinBtn,.signupBtn{
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;
+    color:#333;
+    font-size: 16px;
+    font-weight: 500;
+    border:0;
+}
+.formBox{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 50%;
+    height:100%;
+    background: #fff;
+    z-index:150;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.25);
+    transition: 0.5s ease-in-out;
+}
+
+.formBox.active{
+    left:50%;
+}
+.formBox .form{
+    position: absolute;
+    left:0;
+    width:100%;
+    padding:50px;
+    transition: 0.5s;
+}
+.form form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.formBox.active .siginForm{
+    left:-100%;
+}
+.formBox .siginForm{
+    transition-delay: 0.25s;
+}
+.formBox .sigupForm{
+    left:100%;
+    transition-delay: 0.25s;
+}
+.formBox.active .sigupForm{
+    left:0;
+}
+.form form h3{
+    font-size: 1.5em;
+    color:#333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.formBox .form input{
+    width:100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size:16px;
+    border: 1px solid #333;
+}
+.formBox .form input[type="submit"]{
+    background: #03a9f4;
+    border:none;
+    color:white;
+    max-width: 100px;
+    cursor: pointer;
+}
+.formBox .form input[value="Register"] {
+    background: #f43648;
+}
+.forgot{
+    color:#333;
+}
