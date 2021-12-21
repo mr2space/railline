@@ -1,14 +1,15 @@
 from django.db import models
-
-# Create your models here.
-
+from django import forms
+# Create your models here
 
 class user(models.Model):
+    user_name = models.CharField(max_length=10,default='',unique=True)
+    profile = models.ImageField()
     name = models.CharField(max_length=50)
-    passwd = models.CharField(max_length=300)
-    mobileNo = models.CharField(max_length=50)
-    email=models.EmailField(default="null",max_length=254)
-    age = models.BooleanField(default=False)
+    passwd = models.CharField(forms.PasswordInput)
+    email=models.EmailField(null=False,max_length=254,unique=True)
+    mobile_no = models.CharField(max_length=50)
+    is_above_18 = models.BooleanField(default=False)
     gender = models.CharField(max_length=1)
     address = models.CharField(max_length=100)
-    profile = models.ImageField()
+    created_at = models.DateTimeField(auto_now_add=True)
