@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
@@ -143,3 +144,18 @@ MEDIA_URL = '/media/'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+
+#Login and Email - Verification stuff is here 
+LOGIN_REDIRECT_URL = 'index'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+#----------- WARNING !!!! DO NOT DISCLOSE ----------------------------
+EMAIL_HOST_USER = 'mrspace.pro@gmail.com'
+EMAIL_HOST_PASSWORD = '0rail0line0!'
