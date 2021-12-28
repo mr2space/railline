@@ -1,8 +1,6 @@
 from django.urls import path
-from . import views as user_views
+from django.urls.conf import include
+from . import views
 urlpatterns = [
-    # path('',views.accounts,name="accounts"),
-    path('register', user_views.userRegistration.register, name='register'),
-    path('verifyEmail', user_views.userRegistration.verifyEmail,name='verfyEmail'),
-    # path('api',user_views.accountsViews.as_view(),name="our first API")
+    path('', views.userLogin, name="User Login")
 ]

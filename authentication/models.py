@@ -1,12 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-import random
-import math
-import hashlib
-
 from django.db.models.enums import Choices
 from django.db.models.expressions import F
 # Create your models here
+
+
+
+
+
+
+
+#---------------user registration model ------------------------------------------------
 class userCreations(models.Model):
     
     # variable use to store default values in database 
@@ -27,21 +31,6 @@ class userCreations(models.Model):
     address = models.CharField(max_length=100)
     otp = models.CharField(max_length=5,default='00000',null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    
-    def setPassword(self, raw_password):
-        passwd=str(raw_password)
-        passwd = hashlib.sha256(passwd.encode())
-        return passwd
-        
-    def otpGenearator(self):
-        # variable to store digit use in Otp
-        digits = '0123456789'
-        otp = ''
-        for i in range(5):
-            otp += str(math.floor(random.random()*10))
-        return otp
-    
 
 
 
@@ -59,3 +48,14 @@ class userAddon(models.Model):
 
     def __str__(self):
         return self.phone_no
+
+
+
+
+
+
+
+#------------ Passanger Mode------------------------------------------------------------
+
+class passanger(models.Model):
+    pass
