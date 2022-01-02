@@ -19,7 +19,7 @@ class userCreations(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     passwd = models.CharField(max_length=1800,null=False)
-    email=models.EmailField(null=False,max_length=254,unique=True)
+    email=models.EmailField(null=False,max_length=254)
     gender_choices = (
         ('M', 'Male'),
         ('F', 'Female')
@@ -50,14 +50,11 @@ class userAddon_saving(models.Model):
     user_name = models.OneToOneField(User,on_delete=models.CASCADE)
     profile = models.ImageField(
         upload_to='images/', default='—Pngtree—blue default avatar_5938444.png')
-    is_above_18 = models.BooleanField(default=False)
-    gender = models.CharField(max_length=1, default='Male')
     phone_no = models.IntegerField(null=False)
     address = models.CharField(max_length=100,default='',null=True)
     is_above_18 = models.BooleanField(default=False)
     gender = models.CharField(
         max_length=1, choices=gender_choices, default='Male')
-    address = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
