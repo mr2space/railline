@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.http.response import Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate
@@ -34,14 +36,15 @@ def userRegister(request):
     age = request.POST.get('age')
     passwd = request.POST.get("passwd")
     confirm_passwd = request.POST.get("confirm_passwd")
-    userFunction = register.registerFunctions()
-    userFunction.otpGenerator()
-    userFunction.userName = user_name
-    userFunction.email = Email
     
     try:
         obj = models.userCreations.objects.get(user_name=user_name);
     except models.userCreations.DoesNotExist:
+        userFunction = register.registerFunctions()
+        userFunction.otpGenerator()
+        userFunction.userName = user_name
+        userFunction.email = Email
+        userFunction.sendEmail()
         userCreation = models.userCreations(
             user_name=user_name,
             passwd=passwd,
@@ -54,12 +57,10 @@ def userRegister(request):
             otp=userFunction.code,
         )
         userCreation.save()
-        
-        return redirect('user/verification')
+        return redirect('/user/verification')
         # messages.success(request,'user created')
-    else:
-        messages.error(request, "Error. Message not sent.")
-        return render(request,'user/register.html')
+    messages.error(request, "Error. Message not sent.")
+    return render(request,'user/register.html')
 
 
 def otpVerification(request):
@@ -68,11 +69,34 @@ def otpVerification(request):
     user_name = request.POST.get('user_name')
     user_otp = request.POST.get('user_otp')
     try:
-        obj = models.userCreations.objects.filter(
-            entry__username__contains=user_name,
-            entry__otp__contains=user_otp,)
+        obj = models.userCreations.objects.get(
+            user_name=f"{user_name}",
+            otp=user_otp)
+
+
     except models.userCreations.DoesNotExist:
+        return HttpResponse("error user not on list")
+
+
+    print(obj)
+    # except .DoesNotExist:
+    if obj == None:
         return redirect('/user/verification')
-    if not(obj.exists()):
-        return redirect('user/verification')
+    user = User.objects.create_user( 
+        username = obj.user_name,
+        first_name = obj.first_name,
+        last_name = obj.last_name,
+        password = obj.passwd,
+        email = obj.email
+    )
+    user.save()
+    userAddon = models.userAddon_saving(
+        user_name=User.objects.get(username=user_name),
+        phone_no=obj.phone_no,
+        is_above_18=obj.is_above_18,
+        gender= obj.gender
+    )
+    userAddon.save()
+    obj.delete()
+    return HttpResponse("registered")
     

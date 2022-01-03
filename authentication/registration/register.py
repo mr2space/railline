@@ -7,7 +7,10 @@ import hashlib
 
 
 
-class registerFunctions():  
+class registerFunctions():
+    userName = ''
+    code = ''
+    email = ''
     def hashPassword(self, raw_password):
         passwd = str(raw_password)
         passwd = hashlib.sha256(passwd.encode())
@@ -19,12 +22,13 @@ class registerFunctions():
         otp = ''
         for i in range(5):
             otp += str(math.floor(random.random()*10))
-        return otp
+        self.code = otp
+        return 1
     
     def sendEmail(self):
         htmly = get_template('user/Email.html')
         d = { 'userName': self.userName, 'code':self.code}
-        subject, from_email, to = 'welcome', 'mrspace.pro@gmail.com', self.email
+        subject, from_email, to = f'welcome {self.userName}', 'mrspace.pro@gmail.com', self.email
         html_content = htmly.render(d)
         msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
         msg.attach_alternative(html_content,"text/html")
