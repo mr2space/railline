@@ -36,7 +36,10 @@ def userRegister(request):
     age = request.POST.get('age')
     passwd = request.POST.get("passwd")
     confirm_passwd = request.POST.get("confirm_passwd")
-    
+    if passwd != confirm_passwd:
+        messages.error(request, "Password enter is different ")
+        return render(request, 'user/register.html')
+        
     try:
         obj = models.userCreations.objects.get(user_name=user_name);
     except models.userCreations.DoesNotExist:
@@ -59,7 +62,7 @@ def userRegister(request):
         userCreation.save()
         return redirect('/user/verification')
         # messages.success(request,'user created')
-    messages.error(request, "Error. Message not sent.")
+    messages.error(request, "Username Already Exist")
     return render(request,'user/register.html')
 
 
@@ -75,11 +78,9 @@ def otpVerification(request):
 
 
     except models.userCreations.DoesNotExist:
-        return HttpResponse("error user not on list")
-
-
-    print(obj)
-    # except .DoesNotExist:
+        messages.error(request, "Username or OTP not matched")
+        return render(request, 'user/verification.html')
+    
     if obj == None:
         return redirect('/user/verification')
     user = User.objects.create_user( 

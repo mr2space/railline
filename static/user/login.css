@@ -1,4 +1,5 @@
 
+
 :root {
     --bs-success: #18BD82;
     --bs-primary: #00B0FF;
@@ -7,8 +8,10 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800;1,100;1,300;1,400&family=Work+Sans:wght@200;400&display=swap');
 p,a{
-    font-family: 'Poppins';
+    font-family: 'Poppins',
+    sans-serif;
 }
+
 
 .form-section{
     position: absolute;
@@ -21,7 +24,7 @@ p,a{
     justify-content: space-around;
     align-items: center;
      background: #00B0FF;
-     background: linear-gradient(0deg, #00B0FF 0%, rgba(0, 0, 0, 0.5) 90%), url("/static/user/images/platform-men.jpg");
+     background: linear-gradient(0deg, #00B0FF 0%, rgba(0, 0, 0, 0.5) 90%), url("/static/user/images/railline-logos_white.png");
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -60,7 +63,8 @@ box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
 .form-options .register-form a {
     text-decoration: none;
     color: var(--bs-success);
-    font-family:'Poppins';
+    font-family: 'Poppins',
+    sans-serif;
 }
 .form-options .login-form,
 .form-options .register-form {
@@ -123,17 +127,16 @@ box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
     font-size: 15px;
 }
 
-#login form .field{
+* .field{
     margin:10px auto;
 }
-#register button,
-#login form button{
-    width:0;
-    height:0;
+
+#login form button,
+#register form button{
     border: 0px;
     outline:0;
     padding:10px 35px;
-    margin:20px auto;
+    margin:10px auto;
     color:white;
     background: linear-gradient(90deg, #18BD82 0%, #00B0FF 100%);
     position: relative;
@@ -159,7 +162,8 @@ box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
     color: #41403e;
     cursor: pointer;
     display: inline-block;
-    font-family: Neucha, sans-serif;
+font-family: 'Poppins',
+sans-serif;
     font-size: 1rem;
     line-height: 23px;
     outline: none;

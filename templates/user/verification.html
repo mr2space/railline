@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,8 +14,8 @@
         <link rel="stylesheet" href="{% static 'user/login.css' %}">
         <link rel="stylesheet" href="{% static 'user/register.css' %}">
         <title>Document</title>
-        <link rel="stylesheet" href="{% static 'user/verification.css' %}">▐
     </head>
+    <link rel="stylesheet" href="{% static 'user/verification.css' %}">
 <body>
     
     <section class="header-nav container-fluid">
@@ -55,7 +54,7 @@
             <div class="form-box">
 
                 <div class="login-form active-form-options">
-                    <a href="#">Login</a>
+                    <a href="#">Verify Email</a>
                 </div>
                 
                 <div class="form" id="login">
@@ -67,10 +66,7 @@
                         <div class="field">
                             <input type="text" name="user_otp" id="user-input" placeholder="OTP" required>
                         </div>
-                        <div class="row container-fluid">
-
-                            <button class="col-12 button-55 rounded-pill" type="submit">VERIFY</button>
-                        </div>
+                        <button class=" button-55 rounded-pill" type="submit">VERIFY</button>
                     </form>
                 </div>
             </div>
@@ -89,7 +85,7 @@
 
 
         <!-- at the end of the body -->
-        <script type="text/javascript" src="{% static 'user/vanilla-tilt.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'user/vanilla-tilt.min.js' %}"></script>
         <script type="text/javascript">
             VanillaTilt.init(document.querySelector(".form-box"), {
                 max: 5,
