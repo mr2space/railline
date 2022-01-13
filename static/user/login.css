@@ -24,7 +24,7 @@ p,a{
     justify-content: space-around;
     align-items: center;
      background: #00B0FF;
-     background: linear-gradient(0deg, #00B0FF 0%, rgba(0, 0, 0, 0.5) 90%), url("/static/user/images/railline-logos_white.png");
+     background: linear-gradient(0deg, #00B0FF 0%, rgba(0, 0, 0, 0.5) 90%), url('/static/user/images/platform-men.jpg');
     background-size: cover;
     background-position: center;
     z-index: -1;

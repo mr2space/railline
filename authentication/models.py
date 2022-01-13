@@ -15,7 +15,7 @@ class userCreations(models.Model):
     
     # variable use to store default values in database 
 
-    user_name = models.CharField(max_length=10,default='',unique=True,null=False)
+    user_name = models.CharField(max_length=30,default=' ',unique=True,null=False)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     passwd = models.CharField(max_length=1800,null=False)

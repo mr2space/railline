@@ -1,56 +1,29 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!---------- Bootsrap Css  ------ -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!---------- Custom css ------------>
+{% extends "user/user-base.html" %}
+{%load static %}
+{% block css %}
     <link rel="stylesheet" href="{% static 'user/style.css' %}">
     <link rel="stylesheet" href="{% static 'user/login.css' %}">
     <link rel="stylesheet" href="{% static 'user/register.css' %}">
+{% endblock %}
 
-    <title>Document</title>
-</head>
-
-<body>
-
-
-    <section class="header-nav container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" href="#"><img style="width:200px;" src="{% static 'user/images/railline-logos_white.png' %}"
-                        alt="logo"
-                        srcset=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-lists">
-                        <li class="nav-item nav-list rounded-start bg-primary">
-                            <a class="nav-link active text-white text-center" aria-current="page"
-                                href="#"><span>Home</span></a>
-                        </li>
-                        <li class="nav-item nav-list bg-success">
-                            <a class="nav-link text-white text-center" href="#">How We Made It</a>
-                        </li>
-                        <li class="nav-item nav-list bg-success rounded-end">
-                            <a class="nav-link text-white text-center" href="#">Login/Register</a>
-                        </li>
-                </div>
-            </div>
-        </nav>
+{% block title %}
+REGISTER
+{% endblock %}
 
 
 
+{% block message-box%}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+
+{% block root %}
         <section class="form-section">
 
             <div class="form-box">
@@ -63,7 +36,8 @@
                     </div>
                 </div>
                 <div class="form" id="register">
-                    <form action="register" id="register" method="post">
+                    <form action="register" id="" method="post">
+                        {% csrf_token %}
                         <div class="field">
                             <div class="tmp px-4 pb-3">
                                 <input type="text" class="border border-dark col-sm-4 col-form-label col-form-label-sm"
@@ -89,25 +63,43 @@
                         <div class="field">
                             <div class="row px-4 pb-3">
                                 <div class="col">
-                                    <input type="text"
+                                    <input type="email"
                                         class="border border-dark col-sm-12 col-form-label col-form-label-sm"
                                         placeholder="Email" name="email" aria-label="Email">
                                 </div>
                                 <div class="col">
-                                    <input type="text"
+                                    <input type="phone_no"
                                         class="border border-dark col-sm-12 col-form-label col-form-label-sm"
                                         placeholder="Phone No" name="phone_no" aria-label="Phone No">
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="field">
+                            <div class="row px-4 pb-3">
+                                <div class="col">
+                                    <input type="password"
+                                        class="border border-dark col-sm-12 col-form-label col-form-label-sm"
+                                        placeholder="Password" name="passwd" aria-label="Email">
+                                </div>
+                                <div class="col">
+                                    <input type="password"
+                                        class="border border-dark col-sm-12 col-form-label col-form-label-sm"
+                                        placeholder="Confirm Password" name="confirm_passwd" aria-label="Phone No">
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="field">
                             <div class="row px-4 pb-3">
                                 <div class="col">
                                     <select class="form-select form-select-sm" aria-label="gender" name="gender"
                                         required>
                                         <option value="None" selected>Gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
+                                        <option value="m">Male</option>
+                                        <option value="f">Female</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -121,46 +113,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" row container-fluid">
-                            <button class="mx-auto col-4 button-55 rounded-pill" type="submit">REGISTER</button>
+                        <div class="temp-box row">
+                        <button class="button-55 col-3 rounded-pill" type="submit">REGISTER</button>
                         </div>
-
+                       
                     </form>
                 </div>
             </div>
             </div>
 
         </section>
-
-
-
-
-
-
-
-
-
-
-
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- at the end of the body -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'user/vanilla-tilt.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'user/vanilla-tilt.min.js' %}"></script>
     <script type="text/javascript">
         VanillaTilt.init(document.querySelector(".form-box"), {
             max: 5,
@@ -168,9 +132,5 @@
             glare: true,
             "max-glare": 0.8,
         });
-
-        //It also supports NodeList
     </script>
-</body>
-
-</html>
+{% endblock %}

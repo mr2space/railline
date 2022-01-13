@@ -38,11 +38,11 @@ def userRegister(request):
     confirm_passwd = request.POST.get("confirm_passwd")
     if passwd != confirm_passwd:
         messages.error(request, "Password enter is different ")
-        return render(request, 'user/register.html')
-        
+        return render(request, 'user/register.html')    
     try:
+        print(user_name)
         obj = models.userCreations.objects.get(user_name=user_name);
-    except models.userCreations.DoesNotExist:
+    except :
         userFunction = register.registerFunctions()
         userFunction.otpGenerator()
         userFunction.userName = user_name
