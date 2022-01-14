@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'train.apps.TrainConfig',
     'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
