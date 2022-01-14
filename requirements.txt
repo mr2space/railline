@@ -15,6 +15,7 @@ cffi==1.15.0
 chardet==3.0.4
 charset-normalizer==2.0.8
 Click==7.0
+cloud-init==21.4
 colorama==0.4.3
 command-not-found==0.3
 configobj==5.0.6
@@ -24,6 +25,7 @@ cupshelpers==1.0
 dataclasses==0.6
 dbus-python==1.2.16
 defer==1.0.6
+distlib==0.3.4
 distro==1.4.0
 distro-info===0.23ubuntu1
 Django==3.2.9
@@ -33,6 +35,7 @@ djangorestframework==3.13.1
 elasticsearch==7.15.2
 entrypoints==0.3
 fake-useragent==0.1.11
+filelock==3.4.2
 frozenlist==1.2.0
 geographiclib==1.52
 geopy==2.2.0
@@ -64,6 +67,7 @@ oauthlib==3.1.0
 pandas==1.3.4
 pexpect==4.6.0
 Pillow==8.4.0
+platformdirs==2.4.1
 prettytable==0.7.2
 protobuf==3.6.1
 psutil==5.5.1
@@ -113,6 +117,7 @@ ubuntu-advantage-tools==27.4
 ufw==0.36
 unattended-upgrades==0.1
 urllib3==1.25.8
+virtualenv==20.13.0
 wadllib==1.3.3
 yarl==1.7.2
 zipp==1.0.0
