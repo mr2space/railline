@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'railline.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'d14npts26mb63q',
-        'USER':'fzrxjlqgercbte',
-        'PASSWORD':'366b7903830059f5256a6ffff280c7797679c9f96267a0dba68eec957ecd3812',
-        'HOST':'ec2-34-205-46-149.compute-1.amazonaws.com',
+        'NAME':'railline',
+        'USER':'postgres',
+        'PASSWORD':'5588',
+        'HOST':'127.0.0.1',
         'PORT': '5432'
     }
 }
