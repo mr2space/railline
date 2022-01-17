@@ -1,4 +1,4 @@
-from django.https import HttpRequest
+from django.http import HttpRequest
 from django.shortcuts import render
 from train.trainf.pnr import pnrSearch
 
