@@ -27,7 +27,9 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-
+.active-nav{
+    background-color: var(--bs-primary) !important;
+}
 
 .header-nav{
     position: fixed;
@@ -67,8 +69,8 @@
     align-items: center;
     overflow: hidden;
  background: #00B0FF;
- background: linear-gradient(0deg, #00B0FF 0%, rgba(0, 0, 0, 0.5) 90%)
- ,url('img/engin-akyurt-KdltqGlx34w-unsplash.jpg');
+ background: linear-gradient(0deg, var(--bs-primary) 0%, rgba(0, 0, 0, 0.5) 90%)
+ ,url('/static/images/engin-akyurt-KdltqGlx34w-unsplash.jpg');
     background-size: cover;
 }
 
@@ -192,7 +194,7 @@ li.bg-primary:hover{
     top:100vh;
     width:100%;
     min-height:100vh;
-    background: linear-gradient(to bottom , rgba(0,0,0,0),rgba(0,0,0,0.4)), url('img/maldives-house-exotic-travel-sea.jpg');
+    background: linear-gradient(to bottom , rgba(0,0,0,0),rgba(0,0,0,0.4)), url("/static/images/wallpaperflare.com_wallpaper-2.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -380,3 +382,38 @@ li.bg-primary:hover{
 #form-pnr-search .input-box span{
     justify-content: center;
 }
+
+
+
+
+
+/* features ---------------------------------------- */
+
+
+#features{
+    position: relative;
+    top:100vh;
+    z-index:100;
+}
+
+.heading-text{
+    margin-top: 30px;
+    width:100%;
+    text-align: center;
+}
+.heading-text span{
+    color: var(--bs-success);
+    margin-bottom: 10px;
+
+}
+
+.features-content{
+    display: flex;
+    justify-content: space-around;
+}
+.features-content .column{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    
+ }

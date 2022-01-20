@@ -1,42 +1,51 @@
-from django.contrib.auth.forms import UsernameField
-from django.template.loader import get_template
-from django.core.mail import EmailMultiAlternatives
-import random
-import math
-import hashlib
+from django.shortcuts import render, redirect
+from .. import models
+from django.contrib import messages
+from authentication.registration import addF
 
-
-
-class registerFunctions():
-    userName = ''
-    code = ''
-    email = ''
-    def hashPassword(self, raw_password):
-        passwd = str(raw_password)
-        passwd = hashlib.sha256(passwd.encode())
-        return passwd
-    
-    def otpGenerator(self):
-        # variable to store digit use in Otp
-        digits = '0123456789'
-        otp = ''
-        for i in range(5):
-            otp += str(math.floor(random.random()*10))
-        self.code = otp
-        return 1
-    
-    def sendEmail(self):
-        htmly = get_template('user/Email.html')
-        d = { 'userName': self.userName, 'code':self.code}
-        subject, from_email, to = f'welcome {self.userName}', 'mrspace.pro@gmail.com', self.email
-        html_content = htmly.render(d)
-        msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-        msg.attach_alternative(html_content,"text/html")
-        msg.send()
-        return 1
-    
-    def resendOtp(self):
-        self.code = self.otpGenerator()
-        self.sendEmail()
-        return 1
-
+def registerLogic(request):
+    navbar = {
+        'HNav': 'bg-success',
+        'HWMINav': 'bg-success',
+        'LNav': 'bg-success',
+        'RNav': 'active-nav',
+    }
+    if request.method != 'POST':
+        return render(request,'user/register.html',navbar)
+    user_name = request.POST.get('user_name')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    Email = request.POST.get('email')
+    phone_no = request.POST.get('phone_no')
+    gender = request.POST.get('gender')
+    age = request.POST.get('age')
+    passwd = request.POST.get("passwd")
+    confirm_passwd = request.POST.get("confirm_passwd")
+    if passwd != confirm_passwd:
+        messages.error(request, "Password enter is different ")
+        return render(request, 'user/register.html')    
+    try:
+        print(user_name)
+        obj = models.userCreations.objects.get(user_name=user_name);
+    except models.userCreations.DoesNotExist:
+        userFunction = addF.registerFunctions()
+        userFunction.otpGenerator()
+        userFunction.userName = user_name
+        userFunction.email = Email
+        userFunction.sendEmail()
+        userCreation = models.userCreations(
+            user_name=user_name,
+            passwd=passwd,
+            first_name=first_name,
+            last_name=last_name,
+            email=Email,
+            phone_no=phone_no,
+            gender=gender,
+            is_above_18=age,
+            otp=userFunction.code,
+        )
+        userCreation.save()
+        return redirect('/user/verification')
+        # messages.success(request,'user created')
+    messages.error(request, "Username Already Exist")
+    return render(request,'user/register.html')

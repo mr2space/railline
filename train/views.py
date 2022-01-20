@@ -9,6 +9,12 @@ def pnr(request):
     # result = pnrSearch(pnr)
     return HttpRequest(pnr)
 def index(request):
-    return render(request,'index.html')
+    navbar = {
+        'HNav': 'active-nav',
+        'HWMINav': 'bg-success',
+        'LNav': 'bg-success',
+        'RNav': 'bg-success',
+    }
+    return render(request,'index.html',navbar)
 
 

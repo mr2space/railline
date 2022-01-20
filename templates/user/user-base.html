@@ -19,7 +19,7 @@
     <section class="header-nav container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light .bg-transparent">
             <div class="container-sm">
-                <a class="navbar-brand text-white" href="#"><img style="width:200px;" src="{% static 'user/images/railline-logos_white.png' %}"
+                <a class="navbar-brand text-white" href="/"><img style="width:200px;" src="{% static 'user/images/railline-logos_white.png' %}"
                         alt="logo"
                         srcset=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,20 +29,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-lists">
-                        <li class="nav-item nav-list rounded-start bg-primary">
-                            <a class="nav-link text-white {{HomeNav}} text-center" aria-current="page"
-                                href="#"><span>Home</span></a>
+                        <li class="nav-item nav-list rounded-start {{HNav}}">
+                            <a class="nav-link text-white  text-center" aria-current="page"
+                                href="/"><span>Home</span></a>
                         </li>
-                        <li class="nav-item nav-list bg-success">
-                            <a class="nav-link {{HWMINav}} text-white text-center" href="#">How We Made It</a>
+                        <li class="nav-item nav-list {{HWMINav}}">
+                            <a class="nav-link  text-white text-center" href="#">How We Made It</a>
                         </li>
-                        <li class="nav-item nav-list bg-success rounded-end">
-                            <a class="nav-link {{LRNav}} text-white text-center" href="#">Login/Register</a>
+                        <li class="nav-item nav-list {{LNav}}">
+                            <a class="nav-link  text-white text-center" href="/user/login">Login</a>
+                        </li>
+                        <li class="nav-item nav-list  {{RNav}}  rounded-end">
+                            <a class="nav-link text-white text-center" href="/user/register">Register</a>
                         </li>
                 </div>
             </div>
         </nav>
-
+    </section>
 
 {% block root %} {% endblock %}
 
