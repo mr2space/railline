@@ -7,13 +7,13 @@ from django.contrib.auth.models import User
 
 def otpLogic(request):
     navbar = {
-        'HNav': 'bg-success',
-        'HWMINav': 'bg-success',
-        'LNav': 'bg-success',
         'RNav': 'active-nav',
     }
+    param = {
+        'navbar':navbar,
+    }
     if request.method != 'POST':
-        return render(request,'user/verification.html',navbar)
+        return render(request,'user/verification.html',param)
     user_name = request.POST.get('user_name')
     user_otp = request.POST.get('user_otp')
     try:
@@ -43,4 +43,4 @@ def otpLogic(request):
         gender= obj.gender
     )
     userAddon.save()
-    return HttpResponse("registered")
+    return redirect("/user/login")

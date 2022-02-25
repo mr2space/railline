@@ -34,12 +34,12 @@ p,a{
     position: relative;
     width:650px;
     height:250px;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.1);
     /* background-color: rgb(31, 31, 31); */
     backdrop-filter: blur(2px);
     border-radius: 5px;
     border-top:1px solid rgba(255, 255, 255, 0.35);
-     border-left:1px solid rgba(255, 255, 255, 0.35);
+    border-left:1px solid rgba(255, 255, 255, 0.35);
 box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
 -webkit-box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
 -moz-box-shadow: 16px 12px 34px 8px rgba(0, 0, 0, 0.47);
@@ -187,3 +187,7 @@ sans-serif;
 .button-55:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
+
+
+

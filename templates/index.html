@@ -86,12 +86,12 @@ Railline
                         <div class="input-box left-b"
                             style="width:250px;border-top-left-radius:15px; border-bottom-left-radius:15px;">
                             <span>FROM</span>
-                            <input type="text">
+                            <input type="text" id='origin-input'>
                         </div>
                         <div class="input-box left-b"
                             style="width:250px; border-top-right-radius:15px; border-bottom-right-radius:15px;  border-left:0;">
                             <span>TO</span>
-                            <input type="text">
+                            <input type="text" id="destination-input">
                         </div>
                     </div>
                     <div class="input-grp">
@@ -192,5 +192,33 @@ Railline
             document.querySelector("#form-train-status").classList.add('hidden');
             document.querySelector(`#${name}`).classList.remove('hidden');
         }
+    </script>
+    <script>
+        const origin = document.getElementById("search-box")
+        const  = document.getElementById("box");
+
+    const stationSearch = async text =>{
+        if(text.length<=3){
+            box.innerHTML = ''
+            return []
+        }
+    const stationName = await fetch(`https://indianrailways.p.rapidapi.com/findstations.php?station=${text}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "indianrailways.p.rapidapi.com",
+		"x-rapidapi-key": "cf23647522mshd5acd9e46e038c6p10558bjsn5820f55667fb"
+	}
+})
+    const state = await stationName.json();
+    console.log(state)
+    const html = state.stations.map(
+        match =>
+            `<li>${match.stationName}  /// ${match.stationCode}</li>`
+    ).join('')
+    box.innerHTML = html
+}
+
+search.addEventListener("input",() => stationSearch(search.value));
+
     </script>
 {% endblock %}

@@ -10,11 +10,17 @@ def pnr(request):
     return HttpRequest(pnr)
 def index(request):
     navbar = {
-        'HNav': 'active-nav',
-        'HWMINav': 'bg-success',
-        'LNav': 'bg-success',
-        'RNav': 'bg-success',
+        'HNav': 'active-nav'
     }
-    return render(request,'index.html',navbar)
+    param = {
+        "navbar": navbar
+    }
+    msg = {
+        'heading' : 'test',
+        'body':'body of msg'
+    }
+    param['msg'] = msg
+    print(param)
+    return render(request,'index.html',param)
 
 

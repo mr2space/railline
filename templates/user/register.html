@@ -11,18 +11,6 @@ REGISTER
 {% endblock %}
 
 
-
-{% block message-box%}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endblock %}
-
-
 {% block root %}
         <section class="form-section">
 
@@ -124,6 +112,41 @@ REGISTER
 
         </section>
     </section>
+
+
+
+
+
+
+
+
+{% block message-box%}
+{% if messages %}
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span><br/>
+    {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}
+
+
+
     <script type="text/javascript" src="{% static 'user/vanilla-tilt.min.js' %}"></script>
     <script type="text/javascript">
         VanillaTilt.init(document.querySelector(".form-box"), {

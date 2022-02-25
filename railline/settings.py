@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['railline.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'userProfile',
     'train.apps.TrainConfig',
     'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',

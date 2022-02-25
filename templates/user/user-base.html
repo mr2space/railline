@@ -14,8 +14,6 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    
-{% block message-box %}{% endblock %}
     <section class="header-nav container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light .bg-transparent">
             <div class="container-sm">
@@ -29,17 +27,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-lists">
-                        <li class="nav-item nav-list rounded-start {{HNav}}">
+                        <li class="nav-item nav-list rounded-start {{navbar.HNav}}">
                             <a class="nav-link text-white  text-center" aria-current="page"
                                 href="/"><span>Home</span></a>
                         </li>
-                        <li class="nav-item nav-list {{HWMINav}}">
+                        <li class="nav-item nav-list {{navbar.HWMINav}}">
                             <a class="nav-link  text-white text-center" href="#">How We Made It</a>
                         </li>
-                        <li class="nav-item nav-list {{LNav}}">
+                        <li class="nav-item nav-list {{navbar.LNav}}">
                             <a class="nav-link  text-white text-center" href="/user/login">Login</a>
                         </li>
-                        <li class="nav-item nav-list  {{RNav}}  rounded-end">
+                        <li class="nav-item nav-list  {{navbar.RNav}}  rounded-end">
                             <a class="nav-link text-white text-center" href="/user/register">Register</a>
                         </li>
                 </div>
@@ -47,8 +45,33 @@
         </nav>
     </section>
 
-{% block root %} {% endblock %}
 
+
+
+    
+    {% if msg.heading %}
+      
+    <div class="msg-box">
+        <div class="msg-heading">
+            <h3>{{msg.heading}}</h3> <span>X</span>
+        </div>
+        <div class="msg-body">
+            <p>{{msg.body}}</p>
+        </div>
+    </div>
+        <script>
+        let card_box = document.querySelector('.msg-box');
+        let close = document.querySelector('.msg-heading span ');
+        close.addEventListener("click",closed);
+        function closed(){
+            card_box.style.animationName = "msg_exit";
+        };
+    </script>
+    {% endif %}
+
+
+
+{% block root %} {% endblock %}
 
 
 

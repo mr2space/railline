@@ -5,13 +5,13 @@ from authentication.registration import addF
 
 def registerLogic(request):
     navbar = {
-        'HNav': 'bg-success',
-        'HWMINav': 'bg-success',
-        'LNav': 'bg-success',
         'RNav': 'active-nav',
     }
+    param = {
+        "navbar": navbar
+    }
     if request.method != 'POST':
-        return render(request,'user/register.html',navbar)
+        return render(request,'user/register.html',param)
     user_name = request.POST.get('user_name')
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
@@ -23,7 +23,7 @@ def registerLogic(request):
     confirm_passwd = request.POST.get("confirm_passwd")
     if passwd != confirm_passwd:
         messages.error(request, "Password enter is different ")
-        return render(request, 'user/register.html')    
+        return render(request, 'user/register.html',param)    
     try:
         print(user_name)
         obj = models.userCreations.objects.get(user_name=user_name);
@@ -47,5 +47,6 @@ def registerLogic(request):
         userCreation.save()
         return redirect('/user/verification')
         # messages.success(request,'user created')
-    messages.error(request, "Username Already Exist")
-    return render(request,'user/register.html')
+    msg = "UserName Already exist"
+    param['msg'] = msg
+    return render(request,'user/register.html',param)
