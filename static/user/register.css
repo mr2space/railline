@@ -12,6 +12,8 @@
 * label.fs-6{
     font-size: 10px;
 }
+
+
 #register-btn-submit{
     position:absolute;
     margin-left:50px;
@@ -92,4 +94,9 @@
         width:150px;
         transform: translateY(-10px);
     }
+}
+
+
+.formDjango p label{
+    display:none !important;
 }

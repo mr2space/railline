@@ -6,13 +6,8 @@ def loginLogic(request):
     navbar = {
         'LNav': 'active-nav',
     }
-    msg={
-        "heading":"this is login page",
-        "body":"this is body"
-    }
     param = {
         'navbar': navbar,
-        'msg':msg
     }
     if request.method != 'POST':
         return render(request, 'user/login.html', param)
@@ -21,5 +16,10 @@ def loginLogic(request):
     user = authenticate(username=user_name, password=password)
     if user is not(None):
         login(request,user);
-        return redirect("/userProfile/profile")
-    return redirect('/')
+        return redirect("/user/profile")
+    msg = {
+        "heading": "Login Failed",
+        "body": "Your Username or Password is incorrect"
+    }
+    param['msg'] = msg
+    return render(request, 'user/login.html', param)

@@ -29,4 +29,4 @@ def pnrSearch(pnr):
     # else:
     #     pass
     
-    return HttpResponse(pnr)
+    return pnr

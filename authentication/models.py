@@ -12,9 +12,7 @@ from django.db.models.expressions import F
 
 #---------------user registration model ------------------------------------------------
 class userCreations(models.Model):
-    
     # variable use to store default values in database 
-
     user_name = models.CharField(max_length=30,default=' ',unique=True,null=False)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -28,7 +26,7 @@ class userCreations(models.Model):
         upload_to='images/', default='—Pngtree—blue default avatar_5938444.png')
     is_above_18 = models.BooleanField(default=False)
     gender = models.CharField(max_length=1, default='Male')
-    phone_no = models.IntegerField( null=False)
+    phone_no = models.IntegerField(default="00000")
     address = models.CharField(max_length=100, default='', null=True)
     gender = models.CharField(
         max_length=1, choices=gender_choices, default='Male')
@@ -50,7 +48,7 @@ class userAddon_saving(models.Model):
     user_name = models.OneToOneField(User,on_delete=models.CASCADE)
     profile = models.ImageField(
         upload_to='images/', default='—Pngtree—blue default avatar_5938444.png')
-    phone_no = models.IntegerField(null=False)
+    phone_no = models.IntegerField(default=000000)
     address = models.CharField(max_length=100,default='',null=True)
     is_above_18 = models.BooleanField(default=False)
     gender = models.CharField(

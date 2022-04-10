@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/train/trainrecordview" method="post">
+        {% csrf_token %} 
+    <h2>TrainRecordForm</h2>
+    {{TrainRecordForm.as_p}}
+<button type="submit">submit</button>
+    </form>
+    <form action="/train/trainrouteform" method="post">
+        {% csrf_token %} 
+    <h2>TrainRouteform</h2>
+    {{TrainRouteform.as_p}}
+    <button type="submit">submit</button>
+    </form>
+    <form action="/train/form" method="post">
+        {% csrf_token %} 
+    <h2>TrainRouteTimeForm</h2>
+    {{TrainRouteTimeForm.as_p}}
+    <button type="submit">submit</button>
+    </form>
+
+<script>
+    var dateFeild = document.querySelectorAll("#id_date")
+    dateFeild.map(e=>{e.datetimepicker({
+      format: 'd/m/Y H:i',
+    });})
+</script>
+</body>
+</html>

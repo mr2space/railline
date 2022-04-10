@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+
+# admin.site.register(trainRoutePath)
+admin.site.register(trainRouteTime)
+admin.site.register(trainRecord)
+admin.site.register(quotaPrice)
+
+

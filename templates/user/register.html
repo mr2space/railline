@@ -23,8 +23,8 @@ REGISTER
                         <a href="#">Registration</a>
                     </div>
                 </div>
-                <div class="form" id="register">
-                    <form action="register" id="" method="post">
+                <div class="form" id="register" >
+                    <form action="register" id="" method="post" enctype="multipart/form-data" >
                         {% csrf_token %}
                         <div class="field">
                             <div class="tmp px-4 pb-3">
@@ -55,10 +55,9 @@ REGISTER
                                         class="border border-dark col-sm-12 col-form-label col-form-label-sm"
                                         placeholder="Email" name="email" aria-label="Email">
                                 </div>
-                                <div class="col">
-                                    <input type="phone_no"
-                                        class="border border-dark col-sm-12 col-form-label col-form-label-sm"
-                                        placeholder="Phone No" name="phone_no" aria-label="Phone No">
+                                <div class="col formDjango">
+    <input class="border border-dark col-sm-12 col-form-label col-form-label-sm" type="file" id="img" name="profileImages" accept="image/*">
+                                
                                 </div>
                             </div>
                         </div>

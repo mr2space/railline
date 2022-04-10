@@ -26,13 +26,12 @@ SECRET_KEY = 'django-insecure-b8!vnrb^(lazua6%34+xs2x-p3yg&t0j26n%6twj@umn-ccxpm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['railline.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['railline.herokuapp.com', '127.0.0.1', '172.17.238.254']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'userProfile',
     'train.apps.TrainConfig',
     'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
@@ -143,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 # Path where media is stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images')
 
 
 

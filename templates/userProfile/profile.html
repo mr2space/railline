@@ -1,0 +1,181 @@
+{% extends "../base.html" %}
+{%load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/style.css' %}">
+    <link rel="stylesheet" href="{% static 'user/login.css' %}">
+    <link rel="stylesheet" href="{% static 'userProfile/userProfile.css' %}" />
+{% endblock %}
+{% block title %}
+My Account
+{% endblock %}
+
+{% block root %}
+    {% comment %} <!---------background -------------------> {% endcomment %}
+    <section class="background-box">
+      <div class="circle-1">
+        <div class="circle-3"></div>
+        <div class="circle-4"></div>
+      </div>
+      <div class="circle-2">
+        <div class="circle-5"></div>
+      </div>
+    </section>
+
+    {% comment %} <!-------------- Menu -------------------> {% endcomment %}
+
+    <section class="container-xxl" style="padding-top:35px;">
+      <div class="row">
+        <div class="col-3">
+          <div class="dashboard user">
+            <ul class="list-box">
+              <li id="l1">
+                <a href="#">
+                  <span>Dashboard</span><i class="bi bi-speedometer"></i
+                ></a>
+              </li>
+              <li id="l2">
+                <a href="#"> <span>Orders</span><i class="bi bi-truck"></i></a>
+              </li>
+              <li id="l3" onclick="changeMenu()">
+                <a href="#">
+                  <span>downloads</span
+                  ><i class="bi bi-cloud-arrow-down-fill"></i>
+                </a>
+              </li>
+              <li id="l4">
+
+                <a href="#">
+                  <span>Address</span><i class="bi bi-geo-alt-fill"></i
+                ></a>
+              </li>
+              <li id="l5">
+                <a  href="#">
+                  <span>Account Details</span
+                  ><i class="bi bi-person-lines-fill"></i
+                ></a>
+              </li>
+              <li id="l6">
+                <a  href="#">
+                  <span>Logout</span><i class="bi bi-box-arrow-right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {% comment %} <!---------------------- User Info ------------------> {% endcomment %}
+        <div class="col-12 col-md-8 col-sm-12">
+
+
+
+          <div class="user-page user " id="dashboard">
+              
+            <div class="user-img-box">
+              <img
+                src="{{thisUserAddon.profile.url}}"
+                alt="img"
+              />
+            </div>
+            <div class="user-info">
+              <h3>{{user.get_full_name}}</h3>
+              <p>Founder of Amazon Web Services</p>
+            </div>
+
+          </div>
+
+
+
+
+          <div class="user-page user hidden flex" id="orders">
+            <div class="user-info">
+              <h3>Orders</h3>
+              <p class="center">List Of ticket orders</p>
+              <ol class="list-box">
+              <li>
+                <a href="#">
+                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
+                ></a>
+              </li>
+                            <li>
+                <a href="#">
+                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
+                ></a>
+              </li>
+                            <li>
+                <a href="#">
+                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
+                ></a>
+              </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="user-page user" id="address">
+            <div class="user-info">
+              <h3>Your Address</h3>
+              <form action="" method="post">
+                  {% csrf_token %}
+                <div class="input-box">
+                  <span class="input-heading">
+                    Address
+                  </span> <br>
+                  <input type="text">
+                </div>
+                <div class="input-box">
+                  <span class="input-heading">
+                    Address 2
+                  </span> <br>
+                  <input type="text">
+                </div>
+
+
+                <button type="submit">Save Changes</button>
+              </form>
+
+                
+            </div>
+            </div>
+
+
+          <div class="user-page user" id="accountdetails">
+            <div class="profile-box">
+              <div class="user-img-box">
+                <img src="{{thisUserAddon.profile.url}}" alt="profile-img">
+              </div>
+              <div class="user-info">
+                <h2 class="name">John Swith</h2>
+                <span class="username">john2smith</span>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'userProfile/userProfile.js' %}"></script>
+
+{% endblock %}

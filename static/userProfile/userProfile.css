@@ -1,0 +1,300 @@
+.background-box{
+    width: 100%;
+    height:100vh;
+    background: rgb(4, 11, 69);
+    background: radial-gradient(circle, rgba(4, 11, 69, 1) 0%, rgba(0, 9, 33, 1) 100%);
+    position: fixed;
+    overflow: hidden;
+    z-index: -1;
+    
+}
+*{
+  box-sizing: border-box;
+}
+.circle-1{
+    position: absolute;
+    left:-300px;
+    top:-400px;
+    width:750px;
+    height:750px;
+    border-radius: 50%;
+  background: rgb(0, 9, 85);
+  background: linear-gradient(-45deg, rgba(0, 9, 85, 1) 0%, rgba(0, 6, 23, 0.008916945684523836) 45%);
+  z-index:1;
+ /* border-right: 1px solid rgba(255, 255, 255, 0.11); */
+
+}
+
+.circle-2{
+      position: absolute;
+      right:-400px;
+      top:400px;
+      width:750px;
+      height:750px;
+      border-radius: 50%;
+      background: rgb(0, 9, 85);
+      background: linear-gradient(135deg, rgba(0, 9, 85, 1) 0%, rgba(0, 6, 23, 0.008916945684523836) 45%);
+      z-index:1;
+}
+
+.circle-3{
+    position: relative;
+    left:79%;
+    top:72%;
+    width:125px;
+    height:125px;
+    border-radius: 50%;
+  background: rgb(0, 129, 52);
+  background: linear-gradient(119deg, rgb(3, 134, 56) 0%, rgb(2, 10, 77) 80%);
+  z-index:2;
+}
+
+
+.circle-4{
+  position: relative ;
+  left: 66%;
+  top: 76%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgb(0, 129, 52);
+  background: linear-gradient(119deg, rgb(3, 134, 56) 0%, rgb(2, 10, 77) 80%);
+  z-index:2;
+}
+
+
+
+.circle-5{
+  position: absolute;
+  left: -9%;
+  top: 1%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgb(0, 129, 52);
+  background: linear-gradient(119deg, rgb(3, 134, 56) 0%, rgb(2, 10, 77) 80%);
+}
+
+.boxs{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  min-height: 100%;
+  
+}
+.user-box{
+  width:90%;
+  position: relative;
+  padding:0 3%;
+  margin-top: 10%;
+  margin-left: 6%;
+  overflow: hidden;
+}
+.col-3{
+  min-width: 220px;
+}
+
+.dashboard{
+  /* position: fixed; */
+  /* min-width:200px; */
+  /* width:20%; */ 
+  color:white;
+  width:100%;
+  margin-top: 30%;
+}
+
+.list-box{
+  padding:0px;
+  margin:0px;
+  box-sizing: border-box;
+  list-style: none;
+}
+.user{
+  background-color: rgba(255, 255, 255, 0.148);
+  border-radius: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.556);
+  border-left: 1px solid rgba(255, 255, 255, 0.556);
+  backdrop-filter: blur(3px);
+}
+.list-box {
+  margin-bottom: 30px;
+}
+.list-box li{
+  padding:7% 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.list-box li a{
+  text-decoration: none;
+  color:white;
+}
+.list-box li a span{
+  margin-right: 10px;
+}
+.list-box li:hover{
+  background-color: rgba(255, 255, 255, 0.314);
+}
+
+
+
+#dashboard{
+  padding:10px 20px;
+  display: flex;
+  justify-content: space-around;
+  min-height: 200px;
+  min-width: 350px;
+}
+.user-page{
+  margin-top: 5%;
+  
+}
+.user-img-box{
+  /* float: right; */
+  width:150px;
+  height:150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  overflow: hidden;
+
+}
+.user-img-box img{
+  width:100%;
+  height: 100%;
+  /* position: relative; */
+  object-fit: cover;
+}
+
+@media screen and (max-width: 850px){
+  .user-img-box{
+    width:100px;
+    height:100px;
+  }
+}
+@media screen and (max-width: 520px){
+  #dashboard{
+    display: block;
+  }
+  .user-img-box{
+    width:120px;
+    height:120px;
+    margin:10px auto;
+  }
+}
+.user-info{
+  padding:10px 20px;
+  max-width:80%;
+  color:#fff;
+}
+
+
+/* ----------------------------orders------------------------------------- */
+
+
+#orders{
+  min-width: 300px;
+  width:100%;
+  transition:all 0.3s;
+}
+#orders .user-info{
+  width:100%;
+}
+#orders .user-info h3{
+   text-align: center;
+}
+#orders .user-info p{
+  width:100%;
+  text-align: center;
+}
+
+#orders .list-box li{
+  position: relative;
+  padding:14px 20px !important;
+  /* height:40px !important; */
+  margin:10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.323);
+}
+#orders .list-box li i{
+  position: absolute;
+  right:5%;
+}
+
+/*-------- Address ------------------------------ */
+#address{
+  min-width: 350px;
+  transition:all 0.3s;
+}
+#address h3{
+  /* border:1px solid red; */
+  width:100%;
+  margin:20px auto;
+  text-align: center;
+  font-size: 30px;
+
+}
+#address .user{
+  padding-bottom: 60px;
+}
+#address button{
+  margin-left: 30px;
+  border: 0;
+  border-radius: 5px;
+  padding:5px 10px;
+  color:#fff;
+ background: rgb(24,184,146);
+background: linear-gradient(119deg, rgba(24,184,146,1) 0%, rgba(0,20,130,1) 86%); 
+transition: all 1s;
+margin-bottom: 18px;
+}
+#address button:hover{
+     background: rgb(24,184,146);
+background: linear-gradient(125deg, rgba(24,184,146,1) 0%, rgba(0,20,130,1) 86%); 
+}
+
+.input-box{
+  width:100%;
+  margin:10px 20px;
+  padding:10px 10px;
+}
+.input-box span{
+  padding:10px 0;
+  margin-left: 5px;
+}
+.input-box input{
+  width:60%;
+  min-width: 250px;
+  height:40px;
+}
+.input-box input:focus{
+  border: 0;
+}
+@media screen and (max-width: 1000px){
+  .input-box input{
+    width:80%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.flex{
+  display: flex;
+  justify-content: space-around;
+}
+.hidden{
+  display: none !important;
+}
+
+.center{
+  text-align: center;
+}

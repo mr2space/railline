@@ -3,6 +3,8 @@ from .. import models
 from django.contrib import messages
 from authentication.registration import addF
 
+
+
 def registerLogic(request):
     navbar = {
         'RNav': 'active-nav',
@@ -16,7 +18,7 @@ def registerLogic(request):
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
     Email = request.POST.get('email')
-    phone_no = request.POST.get('phone_no')
+    profile = request.FILES["profileImages"]
     gender = request.POST.get('gender')
     age = request.POST.get('age')
     passwd = request.POST.get("passwd")
@@ -39,7 +41,7 @@ def registerLogic(request):
             first_name=first_name,
             last_name=last_name,
             email=Email,
-            phone_no=phone_no,
+            profile=profile,
             gender=gender,
             is_above_18=age,
             otp=userFunction.code,
@@ -50,3 +52,4 @@ def registerLogic(request):
     msg = "UserName Already exist"
     param['msg'] = msg
     return render(request,'user/register.html',param)
+

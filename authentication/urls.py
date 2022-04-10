@@ -5,4 +5,5 @@ urlpatterns = [
     path('login', views.userLogin, name="User Login"),
     path('register',views.userRegister,name="user Register"),
     path('verification',views.otpVerification,name="user verification"),
+    path('profile', views.profile, name="User Profile"),
 ]

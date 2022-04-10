@@ -23,7 +23,10 @@ def otpLogic(request):
 
 
     except models.userCreations.DoesNotExist:
-        messages.error(request, "Username or OTP not matched")
+        msg = {
+            'heading':"Registeration Failed",
+            "body":"username or otp is incorrect try again !!"
+        }
         return render(request, 'user/verification.html')
     
     if obj == None:
@@ -38,7 +41,7 @@ def otpLogic(request):
     user.save()
     userAddon = models.userAddon_saving(
         user_name=User.objects.get(username=user_name),
-        phone_no=obj.phone_no,
+        profile=obj.profile,
         is_above_18=obj.is_above_18,
         gender= obj.gender
     )
