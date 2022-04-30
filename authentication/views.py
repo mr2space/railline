@@ -26,7 +26,7 @@ def profile(request):
     print(request.user.id)
     try:
         profileAddons = userAddons.objects.get(user_name_id=request.user.id)
-        print(Fullname, profileAddons.profile.url)
+        print(profileAddons.address)
     except:
         print("Failed at profileAddon in Auth view")
     return render(request,"./userProfile/profile.html",{"thisUserAddon":profileAddons,"navbar":navbar})
