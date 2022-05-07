@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'train.apps.TrainConfig',
     'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
+    'rest_framework',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

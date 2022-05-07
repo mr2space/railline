@@ -81,17 +81,18 @@ Railline
 
 
 
-                <form id="form-train-search" class="" action="/train/search" method="post">
+                <form id="form-train-search" class="" action="/train_query" method="post">
+                    {%csrf_token%}
                     <div class="input-grp">
                         <div class="input-box wide-box left-b"
                             style="">
                             <span>FROM</span>
-                            <input type="text" id='origin-input'>
+                            <input name="train_query_from" type="text" id='origin-input'>
                         </div>
                         <div class="input-box wide-box left-b"
                             style="">
                             <span>TO</span>
-                            <input type="text" id="destination-input">
+                            <input name="train_query_to" type="text" id="destination-input">
                         </div>
                     </div>
                     <div class="input-grp">
@@ -194,12 +195,12 @@ Railline
         }
     </script>
     <script>
-        const origin = document.getElementById("search-box")
-        const  = document.getElementById("box");
+        const search = document.getElementById("origin-input")
+        const box = document.getElementById("box");
 
     const stationSearch = async text =>{
         if(text.length<=3){
-            box.innerHTML = ''
+            //box.innerHTML = ''
             return []
         }
     const stationName = await fetch(`https://indianrailways.p.rapidapi.com/findstations.php?station=${text}`, {
@@ -215,10 +216,17 @@ Railline
         match =>
             `<li>${match.stationName}  /// ${match.stationCode}</li>`
     ).join('')
-    box.innerHTML = html
+    //box.innerHTML = html
+    console.log(html)
 }
 
 search.addEventListener("input",() => stationSearch(search.value));
+async function hello(){
+  const trains = await fetch("http://127.0.0.1:8000/api/55588/")
+  const res = await trains.json()
+  console.log(res);
+}
+hello()
 
     </script>
 {% endblock %}

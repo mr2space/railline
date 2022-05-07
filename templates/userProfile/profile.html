@@ -1,187 +1,180 @@
 {% extends "../base.html" %}
 {%load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'user/style.css' %}">
-    <link rel="stylesheet" href="{% static 'user/login.css' %}">
-    <link rel="stylesheet" href="{% static 'userProfile/userProfile.css' %}" />
+<link rel="stylesheet" href="{% static 'user/style.css' %}">
+<link rel="stylesheet" href="{% static 'user/login.css' %}">
+<link rel="stylesheet" href="{% static 'userProfile/userProfile.css' %}" />
 {% endblock %}
 {% block title %}
 My Account
 {% endblock %}
 
 {% block root %}
-    {% comment %} <!---------background -------------------> {% endcomment %}
-    <section class="background-box">
-      <div class="circle-1">
-        <div class="circle-3"></div>
-        <div class="circle-4"></div>
+{% comment %}
+<!---------background -------------------> {% endcomment %}
+<section class="background-box">
+  <div class="circle-1">
+    <div class="circle-3"></div>
+    <div class="circle-4"></div>
+  </div>
+  <div class="circle-2">
+    <div class="circle-5"></div>
+  </div>
+</section>
+
+{% comment %}
+<!-------------- Menu -------------------> {% endcomment %}
+
+<section class="container-xxl" style="padding-top:35px;">
+  <div class="row">
+    <div class="col-3">
+      <div class="dashboard user">
+        <ul class="list-box">
+          <li id="l1" onclick="changeMenu()">
+            <a href="#">
+              <span>Dashboard</span><i class="bi bi-speedometer"></i></a>
+          </li>
+          <li id="l2" onclick="changeMenu()">
+            <a href="#"> <span>Orders</span><i class="bi bi-truck"></i></a>
+          </li>
+          <li id="l3" onclick="changeMenu()">
+            <a href="#">
+              <span>downloads</span><i class="bi bi-cloud-arrow-down-fill"></i>
+            </a>
+          </li>
+          <li id="l4" onclick="changeMenu()">
+
+            <a href="#">
+              <span>Address</span><i class="bi bi-geo-alt-fill"></i></a>
+          </li>
+          <li id="l5" onclick="changeMenu()">
+            <a href="#">
+              <span>Account Details</span><i class="bi bi-person-lines-fill"></i></a>
+          </li>
+          <li id="l6" onclick="changeMenu()">
+            <a href="#">
+              <span>Logout</span><i class="bi bi-box-arrow-right"></i></a>
+          </li>
+        </ul>
       </div>
-      <div class="circle-2">
-        <div class="circle-5"></div>
-      </div>
-    </section>
+    </div>
 
-    {% comment %} <!-------------- Menu -------------------> {% endcomment %}
+    {% comment %}
+    <!---------------------- User Info ------------------> {% endcomment %}
+    <div class="col-12 col-md-8 col-sm-12">
 
-    <section class="container-xxl" style="padding-top:35px;">
-      <div class="row">
-        <div class="col-3">
-          <div class="dashboard user">
-            <ul class="list-box">
-              <li id="l1">
-                <a href="#">
-                  <span>Dashboard</span><i class="bi bi-speedometer"></i
-                ></a>
-              </li>
-              <li id="l2">
-                <a href="#"> <span>Orders</span><i class="bi bi-truck"></i></a>
-              </li>
-              <li id="l3" onclick="changeMenu()">
-                <a href="#">
-                  <span>downloads</span
-                  ><i class="bi bi-cloud-arrow-down-fill"></i>
-                </a>
-              </li>
-              <li id="l4">
 
-                <a href="#">
-                  <span>Address</span><i class="bi bi-geo-alt-fill"></i
-                ></a>
-              </li>
-              <li id="l5">
-                <a  href="#">
-                  <span>Account Details</span
-                  ><i class="bi bi-person-lines-fill"></i
-                ></a>
-              </li>
-              <li id="l6">
-                <a  href="#">
-                  <span>Logout</span><i class="bi bi-box-arrow-right"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
+      <div id="dashboard">
+      <div class="user-page user " id="summary">
+      
+        <div class="user-img-box">
+          <img src="{{thisUserAddon.profile.url}}" alt="img" />
         </div>
-
-        {% comment %} <!---------------------- User Info ------------------> {% endcomment %}
-        <div class="col-12 col-md-8 col-sm-12">
-
-
-
-          <div class="user-page user " id="dashboard">
-              
-            <div class="user-img-box">
-              <img
-                src="{{thisUserAddon.profile.url}}"
-                alt="img"
-              />
-            </div>
-            <div class="user-info">
-              <h3>{{user.get_full_name}}</h3>
-              <small>@{{user.username}}</small>
-              <p>Founder of Amazon Web Services</p>
-            </div>
-
+        <div class="user-info">
+          <h3>{{user.get_full_name}}</h3>
+          <small>@{{user.username}}</small>
+          <p>Founder of Amazon Web Services</p>
+        </div>
+      
+      </div>
+      <div class="user-page user" id="account-summery">
+        <div class="summery-box">
+          <div class="heading">
+            <h3>Account Summary</h3>
           </div>
-          <div class="user-page user" id="account-summery">
-            <div class="summery-box">
-              <div class="heading">
-                <h3>Account Summary</h3>
-              </div>
-              <div class="summery-box">
-                <div class="detail-box">
-                  <span>Address</span>
-                  <p class="detail">{{thisUserAddon.address}}</p>
-                </div>
-              </div>
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14418.508858376568!2d81.87118689783935!3d25.38380742349718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1651285620400!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-            </div>
+          <div class="detail-box">
+            <span>Address <i class="bi bi-geo-alt-fill"></i> :</span>
+            <p class="detail">{{thisUserAddon.address}}</p>
+          </div>
+          <div class="detail-box">
+            <span>Phone No <i class="bi bi-telephone-fill"></i> :</span>
+            <p class="detail">{{thisUserAddon.phone_no}}</p>
+          </div>
+          <div class="detail-box">
+            <span>Email Address <i class="bi bi-envelope-fill"></i> :</span>
+            <p class="detail">{{user.email}}</p>
+          </div>
+          <div class="detail-box">
+            <span>Gender <i class="bi bi-person-fill"></i> :</span>
+            <p class="detail">{%if thisUserAddon.gender == 'm' %}
+              Male
+              {% elif thisUserAddon.gender == 'f' %}
+              Female
+              {%endif%}
+            </p>
           </div>
 
+      </div>
+
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14418.508858376568!2d81.87118689783935!3d25.38380742349718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1651285620400!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </div>
+      </div>
 
 
 
-          <div class="user-page user hidden flex" id="orders">
-            <div class="user-info">
-              <h3>Orders</h3>
-              <p class="center">List Of ticket orders</p>
-              <ol class="list-box">
-              <li>
-                <a href="#">
-                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
-                ></a>
-              </li>
-                            <li>
-                <a href="#">
-                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
-                ></a>
-              </li>
-                            <li>
-                <a href="#">
-                  <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i
-                ></a>
-              </li>
-              </ol>
+
+      <div class="user-page user hidden flex" id="orders">
+        <div class="user-info">
+          <h3>Orders</h3>
+          <p class="center">List Of ticket orders</p>
+          <ol class="list-box">
+            <li>
+              <a href="#">
+                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
+            </li>
+            <li>
+              <a href="#">
+                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
+            </li>
+            <li>
+              <a href="#">
+                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="user-page user" id="address">
+        <div class="user-info">
+          <h3>Your Address</h3>
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="input-box">
+              <span class="input-heading">
+                Address
+              </span> <br>
+              <input type="text">
             </div>
-          </div>
-
-          <div class="user-page user" id="address">
-            <div class="user-info">
-              <h3>Your Address</h3>
-              <form action="" method="post">
-                  {% csrf_token %}
-                <div class="input-box">
-                  <span class="input-heading">
-                    Address
-                  </span> <br>
-                  <input type="text">
-                </div>
-                <div class="input-box">
-                  <span class="input-heading">
-                    Address 2
-                  </span> <br>
-                  <input type="text">
-                </div>
-
-
-                <button type="submit">Save Changes</button>
-              </form>
-
-                
-            </div>
+            <div class="input-box">
+              <span class="input-heading">
+                Address 2
+              </span> <br>
+              <input type="text">
             </div>
 
 
-          <div class="user-page user" id="accountdetails">
-            <div class="profile-box">
-              <div class="user-img-box">
-                <img src="{{thisUserAddon.profile.url}}" alt="profile-img">
-              </div>
-              <div class="user-info">
-                <h2 class="name">John Swith</h2>
-                <span class="username">john2smith</span>
-              </div>
-            </div>
-
-
-
-          </div>
-
-
-
-
-
-
-
-
-
-
-
+            <button type="submit">Save Changes</button>
+          </form>
 
 
         </div>
       </div>
-    </section>
+
+
+      <div class="user-page user" id="accountdetails">
+        <div class="profile-box">
+          <div class="user-img-box">
+            <img src="{{thisUserAddon.profile.url}}" alt="profile-img">
+          </div>
+          <div class="user-info">
+            <h2 class="name">John Swith</h2>
+            <span class="username">john2smith</span>
+          </div>
+        </div>
+
+
+
+      </div>
 
 
 
@@ -191,6 +184,22 @@ My Account
 
 
 
-    <script src="{% static 'userProfile/userProfile.js' %}"></script>
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="{% static 'userProfile/userProfile.js' %}"></script>
 
 {% endblock %}

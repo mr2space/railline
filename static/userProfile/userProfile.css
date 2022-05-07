@@ -144,7 +144,7 @@
 
 
 
-#dashboard{
+#summary{
   padding:30px 70px;
   display: flex;
   justify-content: left;
@@ -179,7 +179,7 @@
 .user-info small{
   font-size: 14px;
   margin-top: -19px;
-  padding-left:10px;
+  padding-left:3px;
 }
 .summery-box{
   padding:10px 20px;
@@ -188,6 +188,12 @@
   display:flex;
   flex-wrap: wrap;
   flex-direction: row;
+  font-size: 18px;
+  color:#fff;
+  margin-top:10px;
+}
+.detail-box p{
+  margin-left:10px;
 }
 .summery-box .heading h3{
   color:#fff;
@@ -201,7 +207,7 @@
   }
 }
 @media screen and (max-width: 520px){
-  #dashboard{
+  #summary{
     display: block;
   }
   .user-img-box{
