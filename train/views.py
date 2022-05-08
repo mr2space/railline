@@ -1,3 +1,4 @@
+from curses.ascii import FS
 from email import message
 from django.http import HttpRequest, HttpResponse ,JsonResponse
 from django.shortcuts import render,redirect
@@ -23,6 +24,7 @@ def index(request):
     param = {
         "navbar": navbar
     }
+    
     msg = {
         'heading' : 'test',
         'body':'body of msg'
@@ -43,7 +45,7 @@ def trainResultPage(request):
     #     'body': 'body of msg'
     # }
     # param['msg'] = msg
-    return render(request, 'train/ResultPage/TrainResultPage.html', param)
+    return render(request, 'train/ResultPage/index.html', param)
 
     
     
@@ -63,11 +65,13 @@ def train_query(request):
     for i in train:
         train_result[i['Train_No']] = list(
             models.trainRecord.objects.all().filter(Train_No=i['Train_No']).values())
-        print(train_result)
+        # print(train_result)
+        
+        
     return JsonResponse(train_result, safe=False)
 
 
-# @api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def trainQueryByBoardingDestination(request,boarding,destination):
     param = {}
     param['seat_list'] = {'Seat_1A': '1A',
@@ -83,12 +87,13 @@ def trainQueryByBoardingDestination(request,boarding,destination):
         train_result[i['Train_No']] = list(
             models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=destination).values())+list(
             models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=boarding).values())
-        print(train_result)
+        # print(train_result)
     param['train_data'] = train_result
-    return render(request,'train/ResultPage/TrainResultPage.html',param)
+    # return render(request,'train/ResultPage/TrainResultPage.html',param)
+    return JsonResponse(train_result,safe=False)
 
 
-# @api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def trainQueryTrainInfo(request,train_no):
     train_info = list(models.trainRecord.objects.all().filter(Train_No = train_no).values())
     return JsonResponse(train_info, safe=False)
@@ -99,7 +104,10 @@ def getItemsFromDic(my_dic,key):
     return my_dic.get(key)
 
 
-
+@api_view(['GET', 'PUT', 'DELETE'])
+def trainQuotaPriceList(request):
+    priceList = list(models.quotaPrice.objects.all().values())
+    return JsonResponse(priceList,safe=False)
 
 
 
