@@ -54,24 +54,30 @@ Document
 
 
         {% comment %} <!--------------------- first-indiviudal-set------------ --> {% endcomment %}
+        {% for train_id,train_info in train_data.items %}
         <div class="individual-set">
-            <h3>{{train_data}}</h3>
-            {% for mykey,myvalue in train_data.items %}
-            
-            {{ mykey }} : {{ myvalue }}
-            {{break}}
-            {% endfor %}
-            <div class="timing-box"><span>14:00 </span>NGM --- <span>14:00 </span>NGM</div>
+            <h3>{{train_id}}</h3>
+            {% comment %} {{train_info}} {% endcomment %}
+            <div class="timing-box"><span> {{train_info.0.Arrival_time}} </span>{{train_info.0.Station_Code}}   ---  <span>{{train_info.1.Arrival_time}}  </span>{{train_info.1.Station_Code}}</div>
             <div class="seat-type">
                 <div class="seat-summary">
-                    <div id="tn-1234455-sl" class="seat">
+                    {% for dic_seat,dic_value in train_info.0.items %}
+                    {% comment %} {{dic_seat}}||{{dic_value}}<br> {% endcomment %}
+                    {% if dic_seat in seat_list.keys %}
+                    <div id="tn-{{train_id}}-{{ seat_list|getItemsFromDic:dic_seat}}" class="seat">
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
-                            <div class="seat-name">Sl</div>
-                            <div class="price">240</div>
+                            <div class="seat-name">{{ seat_list|getItemsFromDic:dic_seat }}</div>
+                            <div class="price">{{dic_value}}</div>
                         </div>
                         <div class="seat-available success">Available2<span>150</span> </div>
                     </div>
+                    {% endif %}
+                    {%endfor%}
+<!-- 
+
+
+
                     <div id="tn-1234455-1a" class="seat">
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
@@ -95,7 +101,7 @@ Document
                             <div class="price">900</div>
                         </div>
                         <div class="seat-available fail">Not Available <span></span> </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -170,15 +176,15 @@ Document
 
         </div>
 
-
+     {% endfor %} 
         {% comment %} <!-- ---------------------left----------------------> {% endcomment %}
 
                 
     </section>
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  {% comment %} <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <!-- Load our React component. -->
-  <script src="like_button.js"></script>
+  <script src="like_button.js"></script> {% endcomment %}
     <script src="{% static 'TrainResultCss/trainQuery.js' %}"></script>
     <script src="{% static 'TrainResultCss/response.js' %}"></script>
 {% endblock %}

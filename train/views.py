@@ -2,6 +2,7 @@ from email import message
 from django.http import HttpRequest, HttpResponse ,JsonResponse
 from django.shortcuts import render,redirect
 from . import models
+from django.template.defaulttags import register
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -66,30 +67,36 @@ def train_query(request):
     return JsonResponse(train_result, safe=False)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+# @api_view(['GET', 'PUT', 'DELETE'])
 def trainQueryByBoardingDestination(request,boarding,destination):
     param = {}
+    param['seat_list'] = {'Seat_1A': '1A',
+                          'Seat_2A': '2A', 'Seat_3A': '3A', 'Seat_SL': 'SL'}
     train_des = models.trainRecord.objects.all().filter(
         Station_Name=destination).distinct().values("Train_No")
     train = []
     train_result = {}
     for i in train_des:
         train = train + list(models.trainRecord.objects.all().filter(
-            Station_Name=boarding).filter(Train_No=i['Train_No']).values("Train_No"))
+            Station_Name=boarding).filter(Train_No=i['Train_No']).distinct('Train_No').values("Train_No"))
     for i in train[:15]:
         train_result[i['Train_No']] = list(
-            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).filter(Station_Name=destination).values())+list(
-            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).filter(Station_Name=boarding).values())
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=destination).values())+list(
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=boarding).values())
+        print(train_result)
     param['train_data'] = train_result
     return render(request,'train/ResultPage/TrainResultPage.html',param)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+# @api_view(['GET', 'PUT', 'DELETE'])
 def trainQueryTrainInfo(request,train_no):
     train_info = list(models.trainRecord.objects.all().filter(Train_No = train_no).values())
     return JsonResponse(train_info, safe=False)
 
 
+@register.filter
+def getItemsFromDic(my_dic,key):
+    return my_dic.get(key)
 
 
 
