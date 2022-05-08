@@ -30,7 +30,22 @@ def index(request):
     return render(request,'index.html',param)
 
 
+def trainResultPage(request):
+    navbar = {
+        'HNav': 'active-nav'
+    }
+    param = {
+        "navbar": navbar
+    }
+    # msg = {
+    #     'heading': 'test',
+    #     'body': 'body of msg'
+    # }
+    # param['msg'] = msg
+    return render(request, 'train/ResultPage/TrainResultPage.html', param)
 
+    
+    
 def train_query(request):
     param={}
     if request.method != 'POST':
@@ -51,15 +66,28 @@ def train_query(request):
     return JsonResponse(train_result, safe=False)
 
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def trainQueryByBoardingDestination(request,boarding,destination):
+    param = {}
+    train_des = models.trainRecord.objects.all().filter(
+        Station_Name=destination).distinct().values("Train_No")
+    train = []
+    train_result = {}
+    for i in train_des:
+        train = train + list(models.trainRecord.objects.all().filter(
+            Station_Name=boarding).filter(Train_No=i['Train_No']).values("Train_No"))
+    for i in train[:15]:
+        train_result[i['Train_No']] = list(
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).filter(Station_Name=destination).values())+list(
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).filter(Station_Name=boarding).values())
+    param['train_data'] = train_result
+    return render(request,'train/ResultPage/TrainResultPage.html',param)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def train_list(request, train_no):
-    data = json.dumps({"train_no": train_no})
-    return HttpResponse(data, content_type = "text/json")
-
-
-    
+def trainQueryTrainInfo(request,train_no):
+    train_info = list(models.trainRecord.objects.all().filter(Train_No = train_no).values())
+    return JsonResponse(train_info, safe=False)
 
 
 

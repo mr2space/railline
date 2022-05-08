@@ -221,12 +221,14 @@ Railline
 }
 
 search.addEventListener("input",() => stationSearch(search.value));
-async function hello(){
-  const trains = await fetch("http://127.0.0.1:8000/api/55588/")
-  const res = await trains.json()
-  console.log(res);
+
+
+async function trainQuery(){
+const train = await fetch("http://127.0.0.1:8000/api/train_no/1705/");
+let train_json = await train.json();
+console.log(train_json);
 }
-hello()
+trainQuery()
 
     </script>
 {% endblock %}
