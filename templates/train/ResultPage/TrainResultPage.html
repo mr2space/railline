@@ -54,28 +54,28 @@ Document
 
 
         {% comment %} <!--------------------- first-indiviudal-set------------ --> {% endcomment %}
-        {% for train_id,train_info in train_data.items %}
+        {% comment %} {% for train_id,train_info in train_data.items %}
         <div class="individual-set">
             <h3>{{train_id}}</h3>
             {% comment %} {{train_info}} {% endcomment %}
-            <div class="timing-box"><span> {{train_info.0.Arrival_time}} </span>{{train_info.0.Station_Code}}   ---  <span>{{train_info.1.Arrival_time}}  </span>{{train_info.1.Station_Code}}</div>
+            {% comment %} <div class="timing-box"><span> {{train_info.0.Arrival_time}} </span>{{train_info.0.Station_Code}}   ---  <span>{{train_info.1.Arrival_time}}  </span>{{train_info.1.Station_Code}}</div>
             <div class="seat-type">
                 <div class="seat-summary">
                     {% for dic_seat,dic_value in train_info.0.items %}
                     {% comment %} {{dic_seat}}||{{dic_value}}<br> {% endcomment %}
-                    {% if dic_seat in seat_list.keys %}
+                    {% comment %} {% if dic_seat in seat_list.keys %}
                     <div id="tn-{{train_id}}-{{ seat_list|getItemsFromDic:dic_seat}}" class="seat">
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
                             <div class="seat-name">{{ seat_list|getItemsFromDic:dic_seat }}</div>
-                            <div class="price">{{dic_value}}</div>
+                            <div class="price">{{dic_value*100 + 1}}</div>
                         </div>
-                        <div class="seat-available success">Available2<span>150</span> </div>
-                    </div>
-                    {% endif %}
-                    {%endfor%}
+                        <div class="seat-available success">Available  <span>{{dic_value}}</span> </div>
+                    </div> {% endcomment %}
+                    {% comment %} {% endif %}
+                    {% comment %} {%endfor%} {% endcomment %} 
 <!-- 
-
+ {% endcomment %}
 
 
                     <div id="tn-1234455-1a" class="seat">

@@ -7,6 +7,7 @@ urlpatterns = [
     path("train_result",views.trainResultPage),
     path("api/train_no/<train_no>/", views.trainQueryTrainInfo),
     path("api/train_query/<boarding>/<destination>",views.trainQueryByBoardingDestination),
+    path("api/quota_price/",views.trainQuotaPriceList)
     # path("pnr/",views.pnrSearch,name="pnr search"),
     # path("form",views.trainForm,name="Entry For train"),
     # path("trainrouteform", views.TrainRouteView, name="TrainRouteform"),

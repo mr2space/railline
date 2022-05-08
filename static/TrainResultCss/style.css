@@ -215,7 +215,7 @@
   font-size: 18px;
 }
 .seat {
-  width: 120px;
+  width: 130px;
   height: 85px;
   margin-right: 10px;
   margin-top: 20px;
@@ -287,11 +287,12 @@
   color: rgb(17, 255, 176);
 }
 .fail {
+  font-size: 10px !important;
   color: rgb(241, 24, 93);
 }
 .seat-available {
   margin-top: 15px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .seat-available span {
   font-size: 14px;

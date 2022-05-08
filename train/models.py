@@ -45,7 +45,7 @@ class trainRecord(models.Model):
     Distance = models.IntegerField(null=False, default=0)
 
 class quotaPrice(models.Model):
-    general = models.FloatField()
-    sleeper = models.FloatField()
-    Ac = models.FloatField()
-    Seat = models.FloatField()
+    Seat_1A = models.FloatField(null=False, default=0)
+    Seat_2A = models.FloatField(null=False, default=0)
+    Seat_3A = models.FloatField(null=False, default=0)
+    Seat_SL = models.FloatField(null=False,default=10)
