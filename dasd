@@ -1,0 +1,11 @@
+user.email=princegoswami.space@gmail.com
+user.name=mr2space
+credential.helper=cache
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.rrailline.url=https://github.com/mr2space/railline.git
+remote.rrailline.fetch=+refs/heads/*:refs/remotes/rrailline/*
+branch.master.remote=rrailline
+branch.master.merge=refs/heads/master
