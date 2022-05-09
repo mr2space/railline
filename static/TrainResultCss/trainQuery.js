@@ -72,14 +72,14 @@ function domManipulation(trainObj,price_list){
             </div>`
         // console.log(trainObj)
     }}
-    const summerySeat = document.querySelectorAll(".seat-summary .seat");
-const all_shine_box = document.querySelectorAll(".js-shine-box");
-// const name = '#1234455-sl .js-shine-box'
-// let shine = document.querySelector(`#${name} .js-shine-box`);
-for (let i = 0; i < summerySeat.length; i++) {
-  summerySeat[i].addEventListener("click", clickEvent);
-  all_shine_box[i].classList.remove("shine-box");
-}
+//     const summerySeat = document.querySelectorAll(".seat-summary .seat");
+// const all_shine_box = document.querySelectorAll(".js-shine-box");
+// // const name = '#1234455-sl .js-shine-box'
+// // let shine = document.querySelector(`#${name} .js-shine-box`);
+// for (let i = 0; i < summerySeat.length; i++) {
+//   summerySeat[i].addEventListener("click", clickEvent);
+//   all_shine_box[i].classList.remove("shine-box");
+// }
 
     return trainObj;
 }

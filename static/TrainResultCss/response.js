@@ -13,7 +13,7 @@ for (let i = 0; i < summerySeat.length; i++) {
 
 function clickEvent() {
   let name = this.id;
-  name = name.substring(4);
+  name = name.substring(3);
   console.log(name, `detail-${name} .js-shine-box`);
   let detail = document.getElementById(`detail-${name}`);
   let shine = document.querySelector(`#tn-${name} .js-shine-box`);
@@ -22,11 +22,11 @@ function clickEvent() {
    seat_type[i].classList.add("hidden");
    all_shine_box[i].classList.remove("shine-box");
   }
-  if (1) {
-    // detail.classList.remove("hidden");
+  if (status) {
+    detail.classList.remove("hidden");
     shine.classList.add("shine-box");
   } else {
-    // detail.classList.add(".hide-menu");
+    detail.classList.add(".hide-menu");
     shine.classList.remove("shine-box");
   }
 }
