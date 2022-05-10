@@ -57,14 +57,3 @@ class userAddon_saving(models.Model):
 
     def __str__(self):
         return self.phone_no
-
-
-
-
-
-
-
-#------------ Passanger Mode------------------------------------------------------------
-
-class passanger(models.Model):
-    pass
