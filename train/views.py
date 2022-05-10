@@ -34,11 +34,17 @@ def index(request):
 
 
 def trainResultPage(request):
+    if request.method != 'POST':
+        return redirect('/')
+    train_to = request.POST.get('train_query_to')
+    train_from = request.POST.get('train_query_from')
     navbar = {
         'HNav': 'active-nav'
     }
     param = {
-        "navbar": navbar
+        "navbar": navbar,
+        'train_to': train_to,
+        'train_from': train_from
     }
     # msg = {
     #     'heading': 'test',
@@ -77,19 +83,20 @@ def trainQueryByBoardingDestination(request,boarding,destination):
     param['seat_list'] = {'Seat_1A': '1A',
                           'Seat_2A': '2A', 'Seat_3A': '3A', 'Seat_SL': 'SL'}
     train_des = models.trainRecord.objects.all().filter(
-        Station_Name=destination).distinct().values("Train_No")
+        Station_Code=destination).distinct().values("Train_No")
     train = []
     train_result = {}
     for i in train_des:
         train = train + list(models.trainRecord.objects.all().filter(
-            Station_Name=boarding).filter(Train_No=i['Train_No']).distinct('Train_No').values("Train_No"))
+            Station_Code=boarding).filter(Train_No=i['Train_No']).distinct('Train_No').values("Train_No"))
     for i in train[:15]:
         train_result[i['Train_No']] = list(
-            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=destination).values())+list(
-            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Name=boarding).values())
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Code=destination).values())+list(
+            models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Code=boarding).values())
         # print(train_result)
     param['train_data'] = train_result
     # return render(request,'train/ResultPage/TrainResultPage.html',param)
+    print(train_result)
     return JsonResponse(train_result,safe=False)
 
 

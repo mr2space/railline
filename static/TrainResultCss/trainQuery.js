@@ -4,16 +4,16 @@ async function fetching(){
     // const trainPro = await fetch("http://127.0.0.1:8000/api/train_query/SIRSA/HISAR%20JN").then(data => data.json());
     // const pricePro = await fetch('http://127.0.0.1:8000/api/quota_price/').then(data => data.json())
     let querSet = Promise.all([
-        fetch("http://127.0.0.1:8000/api/train_query/SIRSA/HISAR%20JN").then(data => data.json()),
+        fetch(`http://127.0.0.1:8000/api/train_query/${root_box.getAttribute("data-train-to")}/${root_box.getAttribute("data-train-from")}`).then(data => data.json()),
         fetch('http://127.0.0.1:8000/api/quota_price/').then(data => data.json())
-    ]).then(e => domManipulation(e[0],e[1]))
+    ]).then(e => domManipulation(e[0],e[1])).then((e) => allSineHide())
 }
 
 let train = fetching()
 function domManipulation(trainObj,price_list){
     
     let train;
-    console.log(price_list,trainObj)
+    // console.log(price_list,trainObj)
     for(train in trainObj){
         if((trainObj[train][1].Distance - trainObj[train][0].Distance) > 0){
 
@@ -72,18 +72,23 @@ function domManipulation(trainObj,price_list){
             </div>`
         // console.log(trainObj)
     }}
-//     const summerySeat = document.querySelectorAll(".seat-summary .seat");
-// const all_shine_box = document.querySelectorAll(".js-shine-box");
-// // const name = '#1234455-sl .js-shine-box'
-// // let shine = document.querySelector(`#${name} .js-shine-box`);
-// for (let i = 0; i < summerySeat.length; i++) {
-//   summerySeat[i].addEventListener("click", clickEvent);
-//   all_shine_box[i].classList.remove("shine-box");
-// }
-
-    return trainObj;
+      return trainObj;
 }
 
+
+function allSineHide(){
+    const summerySeat = document.querySelectorAll(".seat-summary .seat");
+// const seat_type = document.querySelectorAll(".list-seat-type");
+const all_shine_box = document.querySelectorAll(".js-shine-box");
+// const name = '#1234455-sl .js-shine-box'
+// let shine = document.querySelector(`#${name} .js-shine-box`);
+
+for (let i = 0; i < summerySeat.length; i++) {
+  summerySeat[i].addEventListener("click", clickEvent);
+  all_shine_box[i].classList.remove("shine-box");
+  console.table(all_shine_box[i])
+}
+}
 
 
 

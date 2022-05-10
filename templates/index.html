@@ -60,14 +60,14 @@ Railline
                     </label>
                 </div>
 
-
+{% comment %} 
                 <div class="form-check">
                     <input class="form-check-input" value="form-train-status" onclick="radiochecked(this)" type="radio"
                         name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Train Status
                     </label>
-                </div>
+                </div> {% endcomment %}
 
 
             </div>
@@ -81,18 +81,30 @@ Railline
 
 
 
-                <form id="form-train-search" class="" action="/train_query" method="post">
+                <form id="form-train-search" class="" action="/train_result" method="post">
                     {%csrf_token%}
                     <div class="input-grp">
                         <div class="input-box wide-box left-b"
                             style="">
                             <span>FROM</span>
                             <input name="train_query_from" type="text" id='origin-input'>
+                            <ul class="suggestions" id="origin-input-suggestion">
+                                <li>Hello </li>
+                                <li>Hello </li>
+                                <li>Hello </li>
+                                <li>Hello </li>
+                            </ul>
                         </div>
                         <div class="input-box wide-box left-b"
                             style="">
                             <span>TO</span>
                             <input name="train_query_to" type="text" id="destination-input">
+                            <ul class="suggestions" id="destination-input-suggestion">
+                                <li>Hello </li>
+                                <li>Hello </li>
+                                <li>Hello </li>
+                                <li>Hello </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="input-grp">
@@ -100,6 +112,7 @@ Railline
                             style="border-top-left-radius:15px; border-bottom-left-radius:15px;">
                             <span>DATE</span>
                             <input type="date">
+                            
                         </div>
                         <div class="input-box left-b"
                             style="border-top-right-radius:15px; border-bottom-right-radius:15px; border-left:0;">
@@ -194,41 +207,5 @@ Railline
             document.querySelector(`#${name}`).classList.remove('hidden');
         }
     </script>
-    <script>
-        const search = document.getElementById("origin-input")
-        const box = document.getElementById("box");
-
-    const stationSearch = async text =>{
-        if(text.length<=3){
-            //box.innerHTML = ''
-            return []
-        }
-    const stationName = await fetch(`https://indianrailways.p.rapidapi.com/findstations.php?station=${text}`, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "indianrailways.p.rapidapi.com",
-		"x-rapidapi-key": "cf23647522mshd5acd9e46e038c6p10558bjsn5820f55667fb"
-	}
-})
-    const state = await stationName.json();
-    console.log(state)
-    const html = state.stations.map(
-        match =>
-            `<li>${match.stationName}  /// ${match.stationCode}</li>`
-    ).join('')
-    //box.innerHTML = html
-    console.log(html)
-}
-
-search.addEventListener("input",() => stationSearch(search.value));
-
-
-async function trainQuery(){
-const train = await fetch("http://127.0.0.1:8000/api/train_no/1705/");
-let train_json = await train.json();
-console.log(train_json);
-}
-trainQuery()
-
-    </script>
+    <script src="{% static 'user/homepage/trainForm.js'%}"></script>
 {% endblock %}

@@ -20,7 +20,7 @@
             <div class="circle-5"></div>
         </div>
     </section>
-    <section id="result-box">
+    <section data-train-to="{{train_to}}" data-train-from="{{train_from}}" id="result-box">
         <!--------------------- first-indiviudal-set------------ -->
         
 
@@ -30,8 +30,6 @@
                 
     </section>
         <script src="{% static 'TrainResultCss/trainQuery.js' %}"></script>
-
-        
-    <script src="{% static 'TrainResultCss/response.js' %}"></script>
+        <script src="{% static 'TrainResultCss/response.js' %}"></script>
 </body>
 </html>
