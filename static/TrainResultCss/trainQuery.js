@@ -13,6 +13,7 @@ let train = fetching()
 function domManipulation(trainObj,price_list){
     
     let train;
+    root_box.innerHTML = '';
     // console.log(price_list,trainObj)
     for(train in trainObj){
         if((trainObj[train][1].Distance - trainObj[train][0].Distance) > 0){
