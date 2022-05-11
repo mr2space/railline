@@ -17,7 +17,7 @@ import json
 #     print(pnr)
 #     # result = pnrSearch(pnr)
 #     return HttpRequest("hello")
-def index(request):
+def index(request,msg={}):
     navbar = {
         'HNav': 'active-nav'
     }

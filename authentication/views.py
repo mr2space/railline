@@ -2,6 +2,7 @@ from authentication.registration.login import loginLogic
 from authentication.registration.otp import otpLogic
 from authentication.registration.register import registerLogic
 from authentication.models import userAddon_saving as userAddons
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
@@ -28,5 +29,12 @@ def profile(request):
         profileAddons = userAddons.objects.get(user_name_id=request.user.id)
         print(profileAddons.address)
     except:
+        profileAddons = {}
         print("Failed at profileAddon in Auth view")
     return render(request,"./userProfile/profile.html",{"thisUserAddon":profileAddons,"navbar":navbar})
+
+
+@login_required(login_url='/user/login')
+def userLogout(request):
+    logout(request)
+    return redirect("/")

@@ -38,7 +38,8 @@
                         </li>
                         <li class="nav-item nav-list {{navbar.LNav}}">
                             {% if user.is_authenticated  %}
-                            <a class="nav-link  text-white text-center" href="/user/profile">Hi, {{user.username}}</a>
+                            <a class="nav-link logout-hover text-white text-center" href="/user/profile">Hi, {{user.username}}</a>
+                            <a class="logout-box" href="/user/logout">Logout <i class="bi bi-box-arrow-right"></i></a>
                             {% else %}
                             <a class="nav-link  text-white text-center" href="/user/login">Login</a>
                             {% endif %}

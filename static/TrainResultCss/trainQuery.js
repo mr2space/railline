@@ -27,7 +27,7 @@ function domManipulation(trainObj,price_list){
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
                             <div class="seat-name">Sl</div>
-                            <div class="price">${price_list[0].Seat_SL*(trainObj[train][1].Distance - trainObj[train][0].Distance)}</div>
+                            <div class="price">${price_list[0].Seat_SL*(trainObj[train][1].Distance - trainObj[train][0].Distance)/10}</div>
                         </div>
                         <div class="seat-available success">Available  <span>${trainObj[train][0].Seat_SL}</span> </div>
                     </div>
@@ -38,7 +38,7 @@ function domManipulation(trainObj,price_list){
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
                             <div class="seat-name">1A</div>
-                            <div class="price">${price_list[0].Seat_1A*(trainObj[train][1].Distance - trainObj[train][0].Distance)}</div>
+                            <div class="price">${price_list[0].Seat_1A*(trainObj[train][1].Distance - trainObj[train][0].Distance)/10}</div>
                         </div>
                         <div class="seat-available success">Available <span>${trainObj[train][0].Seat_1A}</span> </div>
                     </div>
@@ -50,7 +50,7 @@ function domManipulation(trainObj,price_list){
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
                             <div class="seat-name">2A</div>
-                            <div class="price">${price_list[0].Seat_2A*(trainObj[train][1].Distance - trainObj[train][0].Distance)}</div>
+                            <div class="price">${price_list[0].Seat_2A*(trainObj[train][1].Distance - trainObj[train][0].Distance)/10}</div>
                         </div>
                         <div class="seat-available success">Available <span>${trainObj[train][0].Seat_2A}</span> </div>
                     </div>
@@ -62,13 +62,20 @@ function domManipulation(trainObj,price_list){
                         <div class="js-shine-box shine-box"></div>
                         <div class="flex">
                             <div class="seat-name">3A</div>
-                            <div class="price">${price_list[0].Seat_3A*(trainObj[train][1].Distance - trainObj[train][0].Distance)}</div>
+                            <div class="price">${price_list[0].Seat_3A*(trainObj[train][1].Distance - trainObj[train][0].Distance)/10}</div>
                         </div>
                         <div class="seat-available fail">Not Available <span>${trainObj[train][0].Seat_3A}</span> </div>
                     </div>
                 </div>
                 </div>
-                <div id="detail-${trainObj[train][0].Train_No}-sl">
+                <div id="detail-${trainObj[train][0].Train_No}-sl" class="list-seat-type hidden">
+                <div id="menu-SL" class="seat-detail">
+                    <ul>
+                        <li><span class="date"></span><span class="detail-seat">Tue</span><span
+                                class="detail-price"><a href="">Book
+                                    245</a></span></li>
+                    </ul>
+                </div>
             </div>`
         // console.log(trainObj)
     }}

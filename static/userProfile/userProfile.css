@@ -333,3 +333,41 @@ background: linear-gradient(125deg, rgba(24,184,146,1) 0%, rgba(0,20,130,1) 86%)
 .center{
   text-align: center;
 }
+.logout-box{
+  display: none;
+}
+.logout-box:hover{
+display:flex;
+justify-content: center;
+align-items: center;
+color: #fff !important;
+text-decoration: none;
+background: rgba(255, 255, 255, 0.164);
+}
+.logout-hover:hover ~ .logout-box{
+  /* display: flex; */
+  display: flex;
+/* animation-name: logout-form;
+animation-fill-mode: forwards;
+animation-timing-function: ease-in-out;
+animation-duration: 0.4s;
+animation-iteration-count: 1; */
+justify-content: center;
+align-items: center;
+color: #fff !important;
+text-decoration: none;
+background: transparent;
+}
+
+/* @keyframes logout-form {
+  0%{
+    display: none;
+  }
+  50%{
+    display: none;
+  }
+  100%{
+    display: flex;
+  }
+  
+} */

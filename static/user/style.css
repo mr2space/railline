@@ -617,5 +617,8 @@ li.bg-primary:hover{
 .suggestions li:hover{
     background-color: rgba(0, 8, 37, 0.608);
     color:rgb(17, 255, 176);
+}
 
+.logout-hover:hover + .logout-box{
+color: #18BD82;
 }
