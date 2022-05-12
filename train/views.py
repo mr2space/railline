@@ -96,7 +96,6 @@ def trainQueryByBoardingDestination(request,boarding,destination):
         # print(train_result)
     param['train_data'] = train_result
     # return render(request,'train/ResultPage/TrainResultPage.html',param)
-    print(train_result)
     return JsonResponse(train_result,safe=False)
 
 
