@@ -267,7 +267,7 @@
   top: 100%;
   left: 50%;
   width: 150px;
-  height: 4px;
+  height: 1px;
   background-color: rgba(255, 255, 255, 0.799);
   transform: skewY(-50deg);
   animation-name: seat-select-anime;
@@ -282,9 +282,9 @@
   top: 100%;
   left: 0%;
   width: 150px;
-  height: 10px;
+  height: 1px;
   background-color: rgb(255, 255, 255);
-  filter:blur(12px);
+  filter:blur(1px);
 }
 .shine-box::before{
   content: '';
@@ -292,9 +292,9 @@
   bottom:100%;
   left: 0%;
   width: 150px;
-  height: 10px;
+  height: 5px;
   background-color: rgb(255, 255, 255);
-  filter:blur(12px);
+  filter:blur(1px);
 }
 
 

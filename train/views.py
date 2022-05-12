@@ -89,7 +89,7 @@ def trainQueryByBoardingDestination(request,boarding,destination):
     for i in train_des:
         train = train + list(models.trainRecord.objects.all().filter(
             Station_Code=boarding).filter(Train_No=i['Train_No']).distinct('Train_No').values("Train_No"))
-    for i in train[:15]:
+    for i in train:
         train_result[i['Train_No']] = list(
             models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Code=destination).values())+list(
             models.trainRecord.objects.all().filter(Train_No=i['Train_No']).distinct('Train_No').filter(Station_Code=boarding).values())
