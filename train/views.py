@@ -25,10 +25,6 @@ def index(request,msg={}):
         "navbar": navbar
     }
     
-    msg = {
-        'heading' : 'test',
-        'body':'body of msg'
-    }
     param['msg'] = msg
     return render(request,'index.html',param)
 
