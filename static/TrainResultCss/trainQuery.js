@@ -73,7 +73,7 @@ function domManipulation(trainObj,price_list){
                 <div id="menu-SL" class="seat-detail">
                     <ul>
                         <li><span class="date"></span><span class="detail-seat">Tue</span><span
-                                class="detail-price"><a href="/">Book
+                                class="detail-price"><a href="api/booking/${trainObj[train][0].Train_No}/${trainObj[train][0].id}">Book
                                     245</a></span></li>
                     </ul>
                 </div>

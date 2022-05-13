@@ -53,8 +53,6 @@ def trainResultPage(request):
     
 def train_query(request):
     param={}
-    if request.method != 'POST':
-        return redirect("/")
     arrival = request.POST.get("train_query_from")
     destination = request.POST.get("train_query_to")
     train_des = models.trainRecord.objects.all().filter(
