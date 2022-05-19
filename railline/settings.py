@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-b8!vnrb^(lazua6%34+xs2x-p3yg&t0j26n%6twj@umn-ccxpm
 DEBUG = True
 
 ALLOWED_HOSTS = ['railline.herokuapp.com',
-                 '2467-106-219-185-223.in.ngrok.io', '127.0.0.1', '172.17.238.254']
+                 'b14c-106-219-224-193.in.ngrok.io', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition

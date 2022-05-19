@@ -341,6 +341,7 @@
 /* -----------menu---------- */
 .list-seat-type {
   margin: 7px 15px;
+  transition: all 0.5s;
 }
 .menu {
   margin: 17px 5px;

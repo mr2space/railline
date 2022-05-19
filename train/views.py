@@ -111,7 +111,11 @@ def trainQuotaPriceList(request):
 
 
 
-
+def stationCodeToModel(request):
+    allStationCode = models.trainRecord.objects.all().values(
+        "Station_Name",
+        "Station_Code").distinct()
+    return JsonResponse(list(allStationCode),safe = False)
 
 
 # def trainForm(request):

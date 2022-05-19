@@ -1,4 +1,5 @@
 from django.db import models
+from sqlalchemy import false
 class trainRecord(models.Model):
     Train_No = models.IntegerField(null=False)
     # ----------SEAT INFO ------------------------------->
@@ -18,7 +19,14 @@ class trainRecord(models.Model):
     Distance = models.IntegerField(null=False, default=0)
 
 class quotaPrice(models.Model):
-    Seat_1A = models.FloatField(null=False, default=0.0)
-    Seat_2A = models.FloatField(null=False, default=0.0)
-    Seat_3A = models.FloatField(null=False, default=0.0)
-    Seat_SL = models.FloatField(null=False,default=0.0)
+    Seat_1A = models.FloatField(null=False, default=10)
+    Seat_2A = models.FloatField(null=False, default=10)
+    Seat_3A = models.FloatField(null=False, default=10)
+    Seat_SL = models.FloatField(null=False,default=10)
+
+class StationCodeMapper(models.Model):
+    Station_Code = models.CharField(max_length=30,null=False,unique=True)
+    Station_Name = models.CharField(max_length=50 ,null=False)
+
+    def __str__(self):
+        return self.station_name

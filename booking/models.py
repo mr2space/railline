@@ -16,6 +16,10 @@ class PassangerPersonalData(models.Model):
         self.seat_id = self.id
         return 0
 
+class TrainConditions(models.Model):
+    pass
+    
+
 class PassangerData(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     passenger_personal_detail = models.ForeignKey(

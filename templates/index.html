@@ -81,7 +81,7 @@ Railline
 
 
 
-                <form id="form-train-search" class="" action="/train_result" method="post">
+                <form id="form-train-search" class="" action="/train_result" method="post" autocomplete="off">
                     {%csrf_token%}
                     <div class="input-grp">
                         <div class="input-box wide-box left-b"
@@ -98,7 +98,7 @@ Railline
                         <div class="input-box wide-box left-b"
                             style="">
                             <span>TO</span>
-                            <input name="train_query_to" type="text" id="destination-input">
+                            <input name="train_query_to" type="text" id="destination-input" autosu>
                             <ul class="suggestions" id="destination-input-suggestion">
                                 <li>Hello </li>
                                 <li>Hello </li>
