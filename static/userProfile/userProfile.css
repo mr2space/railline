@@ -123,15 +123,15 @@
   border-left: 1px solid rgba(255, 255, 255, 0.556);
   backdrop-filter: blur(3px);
 }
-.list-box {
-  margin-bottom: 30px;
-}
+
 .list-box li{
-  padding:7% 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  padding-top: 15px;
+ padding-bottom: 15px;
 }
 .list-box li a{
+  padding:0px 50px !important;
+  border-radius: 5px;
+  cursor: pointer;
   text-decoration: none;
   color:white;
 }

@@ -463,19 +463,17 @@ li.bg-primary:hover{
     position: absolute;
     top:10%;
     left:37%;
+    padding:5px 10px;
     background-color: rgb(255, 255, 255);
     display: flex;
     margin:0 auto;
-    /* transform: translateX(20%); */
     flex-direction: column;
     align-items: center;
     transition: 0.9s;
     animation-name: msg_entry;
-    /* animation-delay: 2s; */
     animation-duration: 1s;
     animation-fill-mode: forwards;
     border-radius: 7px;
-    /* border-top:4px solid rgb(202, 13, 130); */
     border-top: 4px solid var(--red);
     box-shadow: 6px 20px 36px -7px rgba(0, 0, 0, 0.7);
     -webkit-box-shadow: 6px 20px 36px -7px rgba(0, 0, 0, 0.7);
@@ -491,7 +489,7 @@ li.bg-primary:hover{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 12px;
     letter-spacing: 1px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color:rgb(25, 49, 97);
@@ -507,7 +505,7 @@ li.bg-primary:hover{
     width:100%;
     max-height: 100%;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 20px;
     font-family: Impact, Haettenschweiler, sans-serif;
     color:rgb(18, 21, 80);

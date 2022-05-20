@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;500;900&display=swap');
+
+:root{
+    --font-family: 'Poppins', sans-serif;
+}
+
+*{
+    font-family: var(--font-family);
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+body{
+    overflow: hidden;
+}
+
+
+
+/* -------------------------------background css start here----------------------------------- */
+
+
+/* ----------------background css end here ------------------------------ */
+
+
+
+
+.text-box h2{
+    text-align: center;
+    text-transform:uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color:white;
+}
+#form{
+    padding:25px 35px ;
+    width:450px;
+    height:500px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:  0px 10px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2) ;
+    position: relative;
+    overflow: hidden;
+     
+}
+#form form{
+    position: relative;
+    display: flex;
+    /* overflow: hidden; */
+    width:300%;
+    /* border: 1px solid red; */
+}
+
+
+
+#train-detail{
+    position: absolute;
+    /* width:50%; */
+    height:100%;
+    left:0;
+    transition: all 0.5s;
+    /* border: 1px solid red; */
+}
+#train-detail .back:hover{
+    background: transparent !important;
+    color:#fff !important
+}
+ #personal-detail{
+     position:absolute;
+     height:100%;
+     left:100%;
+     transition: all 0.5s;
+     /* border: 1px solid red; */
+ }
+
+ #personal-detail-2{
+    position:absolute;
+     height:100%;
+     left:100%;
+     transition: all 0.5s;
+ }
+.deactive-form{
+    animation-name: deactive-motion 0.9s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+@keyframes deactive-motion {
+    0%{
+        left:0;
+    }
+    100%{
+       left:-100% !important; 
+    }
+}
+.input-grp{
+    margin-bottom: 25px;
+}
+.input-grp label{
+    display: block;
+    color:white;
+    font-size: 0.8rem;
+    padding-left: 2px;
+}
+.input-grp input{
+    color:white;
+    font-weight: 600;
+    background: rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    padding:10px 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+#passanger-form{
+    min-height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    overflow: hidden;
+
+}
+.submit-box{
+    /* position:absolute; */
+    margin-top: 50px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+     
+}
+.submit-box a{
+    position: absolute;
+    width:140px;
+    height:40px;
+    /* optional must be remove in use*/
+    background: rgba(0, 0, 0, 0.1);
+    /* background: #00fa9a; */
+    font-weight: 500;
+    border-radius: 35px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.25s;
+    position: relative;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+}
+
+
+.next{
+    color:#fff !important;
+    border: 1px solid #00fa9a;
+    background: #1eff45 !important;
+    position: absolute;
+     
+}
+.next:hover{
+    /* color:black !important; */
+    background: #1eff45;
+    box-shadow: 0 0 5px #1eff45,
+        0 0 15px #1eff45,
+        0 0 30px #1eff45,
+        0 0 60px #1eff45;
+         
+}
+.back{
+    color:#fff;
+    border:1px solid #fff;
+    transition: 0.25s;
+}
+.back:hover{
+    color:black ;
+    background: #fff !important;
+        box-shadow: 0 0 5px #fff ,
+        0 0 15px #fff ,
+        0 0 30px #fff ,
+        0 0 60px #fff ;
+         
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .progress{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.progress .step{
+    width:100%;
+}
+.progress .name{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+.progress .count{
+    text-align: center;
+    width:30px;
+    height: 30px;
+    margin:0 auto;
+    border:1px solid red;
+}
+.count p{
+    line-height:0;
+    padding-bottom: 12px;
+    width:30px;
+    height: 30px;
+    /* border:1px solid red; */
+
+
+
+

@@ -9,6 +9,6 @@ from django.contrib.auth.models import User
 @login_required(login_url='/user/login')
 def userBooking(request,train_no,id,destination,boarding):
     
-    return HttpResponse(f"train no : {train_no} \n id: {id} \n {destination} \n {boarding}")
+    return render(request,'./booking/form.html')
     
     
