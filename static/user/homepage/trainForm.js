@@ -14,28 +14,26 @@ function boxUpdate(html,id=null){
     selected_box.innerHTML = html;
 }
 
+async function codeQuerry(){
+    let status = await fetch(`http://127.0.0.1:8000/api/station_code`);
+    stationCodeJson = await status.json();
+}
 
+codeQuerry()
 const stationSearch = async (text,e) =>{
-        if(text.length<3){
-            
+    if(text.length<2){
             return []
         }
-    const stationName = await fetch(`https://indianrailways.p.rapidapi.com/findstations.php?station=${text}`, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "indianrailways.p.rapidapi.com",
-		"x-rapidapi-key": "cf23647522mshd5acd9e46e038c6p10558bjsn5820f55667fb"
-	}
-})
-    const state = await stationName.json();
-    console.log(state)
+    let matches = stationCodeJson.filter(ele =>{
+        let regex = new RegExp(`^${text}`,'gi');
+        return ele.Station_Name.match(regex) || ele.Station_Code.match(regex)
+    })
     try{
-    const html = state.stations.slice(0,7).map(
+    const html = matches.slice(0,7).map(
         match =>
-            `<li onclick="listClickEvent(this,'${e}')" data-parent-id='${e}' data-code='${match.stationCode}' >${match.stationName} (${match.stationCode} )</li>`
+            `<li onclick="listClickEvent(this,'${e}')" data-parent-id='${e}' data-code='${match.Station_Code}' >${match.Station_Name} (${match.Station_Code} )</li>`
     ).join('')
     boxUpdate(html,e);
-    console.log(html)
      }
      catch{
         console.log("error in data")

@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path("",views.index,name="site home page"),
     path("train_result",views.trainResultPage),
-    path("station_code/", views.stationCodeToModel),
+    path("api/station_code/", views.stationCodeToModel),
     path("api/train_no/<train_no>/", views.trainQueryTrainInfo),
     path("api/train_query/<boarding>/<destination>",views.trainQueryByBoardingDestination),
     path("api/quota_price/",views.trainQuotaPriceList)
