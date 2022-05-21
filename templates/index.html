@@ -111,10 +111,10 @@ Railline
                         <div class="input-box left-b"
                             style="border-top-left-radius:15px; border-bottom-left-radius:15px;">
                             <span>DATE</span>
-                            <input type="date">
+                            <input type="date" name="travel_time">
                             
                         </div>
-                        <div class="input-box left-b"
+                        {% comment %} <div class="input-box left-b"
                             style="border-top-right-radius:15px; border-bottom-right-radius:15px; border-left:0;">
                             <span>CLASS</span>
                             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -123,7 +123,7 @@ Railline
                                 <option value="2">Class Sleeper</option>
                                 <option value="3">Class General</option>
                             </select>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     <button type="submit" class="button-55 rounded-pill" id="train-search-btn"> Search </button>
                 </form>
