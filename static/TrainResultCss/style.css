@@ -218,6 +218,7 @@
 }
 .individual-set {
   width: 40%;
+  min-width: 300px !important;
   margin: 20px auto;
   padding: 10px 10px;
   background: rgba(224, 224, 224, 0.262);

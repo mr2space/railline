@@ -1,4 +1,5 @@
 from curses.ascii import FS
+from datetime import datetime
 from email import message
 from django.http import HttpRequest, HttpResponse ,JsonResponse
 from django.shortcuts import render,redirect
@@ -8,15 +9,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
-# import requests
-# from train.trainf.pnr import pnrSearch
-# from .forms import *
 
-# def pnr(request):
-#     pnr = request.POST.get("pnr-box")
-#     print(pnr)
-#     # result = pnrSearch(pnr)
-#     return HttpRequest("hello")
 def index(request,msg={}):
     navbar = {
         'HNav': 'active-nav'
@@ -34,19 +27,24 @@ def trainResultPage(request):
         return redirect('/')
     train_to = request.POST.get('train_query_to')
     train_from = request.POST.get('train_query_from')
+    # train_date = datetime.strptime(request.POST.get(
+    #     'travel_date').replace("-", " ") + " 00:00:00", '%y %m %d %H:%M:%S')
+    train_date = datetime.today()
+    print(request.POST.get('travel_date'),"helllo")
     navbar = {
         'HNav': 'active-nav'
     }
+    # travel_date_info ={
+    #     'travel_date': train_date or datetime.today().strftime('%x'),
+    #     'travel_month': train_date.strftime('%b') or datetime.today().strftime('%b'),
+    #     'travel_day': train_date.strftime('%a') or datetime.today().strftime('%a')
+    # }
     param = {
         "navbar": navbar,
         'train_to': train_to,
-        'train_from': train_from
+        'train_from': train_from,
+        'travel_date_info': request.POST.get('travel_date')
     }
-    # msg = {
-    #     'heading': 'test',
-    #     'body': 'body of msg'
-    # }
-    # param['msg'] = msg
     return render(request, 'train/ResultPage/index.html', param)
 
     
