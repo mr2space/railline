@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "user/user-base.html" %}
 {%load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/login.css' %}">
     <link rel="stylesheet" href="{% static 'TrainResultCss/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <title>Document</title>
-</head>
-
-<body>
+{% endblock %}
+{% block title %}
+Result Page
+{% endblock %}
+{% block root %}
     <section class="background-box">
         <div class="circle-1">
             <div class="circle-3"></div>
@@ -36,7 +34,9 @@
 
                 
     </section>
+        <script>
+            var csrf_token = '{% csrf_token %}'
+        </script>
         <script src="{% static 'TrainResultCss/trainQuery.js' %}"></script>
         <script src="{% static 'TrainResultCss/response.js' %}"></script>
-</body>
-</html>
+{% endblock %}

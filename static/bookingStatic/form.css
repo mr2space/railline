@@ -50,15 +50,18 @@ body{
     /* border: 1px solid red; */
 }
 
-
+#train-detail-2{
+    position: absolute;
+    height:100%;
+    left:100%;
+    transition: all 0.5s;
+}
 
 #train-detail{
     position: absolute;
-    /* width:50%; */
     height:100%;
     left:0;
     transition: all 0.5s;
-    /* border: 1px solid red; */
 }
 #train-detail .back:hover{
     background: transparent !important;
@@ -69,7 +72,6 @@ body{
      height:100%;
      left:100%;
      transition: all 0.5s;
-     /* border: 1px solid red; */
  }
 
  #personal-detail-2{

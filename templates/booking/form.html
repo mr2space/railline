@@ -1,8 +1,8 @@
 {% extends "user/user-base.html" %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static './bookingStatic/form.css' %}">
-    <link rel="stylesheet" href="{% static './bookingStatic/background.css' %}">
+<link rel="stylesheet" href="{% static './bookingStatic/form.css' %}">
+<link rel="stylesheet" href="{% static './bookingStatic/background.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -10,101 +10,127 @@ Booking System
 {% endblock %}
 
 {% block root %}
-    <section id="background">
-        <div class="glass-piece -g1"></div>
-        <div class="glass-piece -g2"></div>
-        <div class="glass-piece -g3"></div>
-        <div class="particle-box-1">
-            <div class="glass-particle -glow-1"></div>
-            <div class="glass-particle -glow-2"></div>
-            <div class="glass-particle -glow-3"></div>
-            <div class="glass-particle -glow-4"></div>
-            <div class="glass-particle -glow-5"></div>
+<section id="background">
+    <div class="glass-piece -g1"></div>
+    <div class="glass-piece -g2"></div>
+    <div class="glass-piece -g3"></div>
+    <div class="particle-box-1">
+        <div class="glass-particle -glow-1"></div>
+        <div class="glass-particle -glow-2"></div>
+        <div class="glass-particle -glow-3"></div>
+        <div class="glass-particle -glow-4"></div>
+        <div class="glass-particle -glow-5"></div>
+    </div>
+    <div class="particle-box-2">
+        <div class="glass-particle -glow-1"></div>
+        <div class="glass-particle -glow-2"></div>
+        <div class="glass-particle -glow-3"></div>
+        <div class="glass-particle -glow-4"></div>
+        <div class="glass-particle -glow-5"></div>
+    </div>
+
+
+</section>
+
+<section id="passanger-form" class="form-background-box">
+
+    <div class="" id="passanger-form-box">
+        <div class="heading-box">
+            <div class="text-box">
+                <h2>Fill The Form</h2>
+            </div>
         </div>
-        <div class="particle-box-2">
-            <div class="glass-particle -glow-1"></div>
-            <div class="glass-particle -glow-2"></div>
-            <div class="glass-particle -glow-3"></div>
-            <div class="glass-particle -glow-4"></div>
-            <div class="glass-particle -glow-5"></div>
-        </div>
 
-
-    </section>
-
-    <section id="passanger-form" class="form-background-box">
-
-        <div class="" id="passanger-form-box">
-            <div class="heading-box">
-                <div class="text-box">
-                    <h2>Fill The Form</h2>
+        <div id="form">
+            <form action="/train" id="form-csrf">
+                <div id="train-detail" class="">
+                    <div class="input-grp">
+                        <label for="">Train no</label>
+                        <input type="text" disabled value="{{train_info.train_no}}">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Boarding</label>
+                        <input type="text" disabled value="{{train_info.boarding}}">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Destinations</label>
+                        <input type="text" disabled value="{{train_info.destination}}">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Date</label>
+                        <input type="date" value="{{train_info.date}}">
+                    </div>
+                    <div class="submit-box">
+                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1" disabled>back</a>
+                        </div>
+                        <div class="glow-btn"><a href="javascript:void(0)" data-pos="1" class="next"
+                                onclick="allNextBtnFun(this)">Next</a></div>
+                    </div>
                 </div>
-            </div>
 
-            <div id="form">
-                <form action="/train" id="form-csrf">
-                    <div id="train-detail" class="" >
-                        <div class="input-grp">
-                            <label for="">Train no</label>
-                            <input type="text" disabled value="Prayagraj">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">Boarding</label>
-                            <input type="text" disabled value="Prayagraj">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">Destinations</label>
-                            <input type="text" disabled value="Prayagraj">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">Date</label>
-                            <input type="date" d>
-                        </div>
-                        <div class="submit-box">
-                            <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1" disabled>back</a></div>
-                            <div class="glow-btn"><a href="javascript:void(0)" data-pos="1"  class="next" onclick="allNextBtnFun(this)">Next</a></div>
-                        </div>
+
+                <div id="train-detail-2">
+                    <div class="input-grp">
+                        <label for="">Seat Type</label>
+                        <input type="text" disabled value="{{train_info.seat_type}}">
                     </div>
-
-                    <div id="personal-detail">
-                        <div class="input-grp">
-                            <label for="">Name</label>
-                            <input type="text" placeholder="Full Name">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">Age</label>
-                            <input type="number" placeholder="Enter Your Age">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">Phone No</label>
-                            <input type="number">
-                        </div>
-                        <div class="input-grp">
-                            <label for="">No of Tickets</label>
-                            <input type="number" >
-                        </div>
-                        <div class="submit-box">
-                            <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2" onclick="allBackBtnFun(this)" disabled>back</a></div>
-                            <div class="glow-btn"><a href="javascript:void(0)" data-pos="2" class="next" onclick="sumbitTheForm()">Submit</a></div>
-                        </div>
+                    <div class="input-grp">
+                        <label for="">Price</label>
+                        <input type="number" disabled value="{{train_info.price}}">
                     </div>
-
-                </form>
-            </div>
-
-
-
-
-
-
+                    <div class="submit-box">
+                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2"
+                                onclick="allBackBtnFun(this)" disabled>back</a></div>
+                        <div class="glow-btn"><a href="javascript:void(0)" data-pos="2" class="next"
+                                onclick="allNextBtnFun(this)">Next</a></div>
+                    </div>
+                </div>
 
 
 
 
+                <div id="personal-detail">
+                    <div class="input-grp">
+                        <label for="">Name</label>
+                        <input type="text" placeholder="Full Name">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Age</label>
+                        <input type="number" placeholder="Enter Your Age">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Phone No</label>
+                        <input type="number">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">No of Tickets</label>
+                        <input type="number">
+                    </div>
+                    <div class="submit-box">
+                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2"
+                                onclick="allBackBtnFun(this)" disabled>back</a></div>
+                        <div class="glow-btn"><a href="javascript:void(0)" data-pos="2" class="next"
+                                onclick="sumbitTheForm()">Submit</a></div>
+                    </div>
+                </div>
+
+            </form>
         </div>
-    </section>
-    <script src="{% static './bookingStatic/form.js' %}"></script>
-    <script>
-        document.queryCommandValue("#train-detail .back").d
-    </script>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</section>
+
+<script src="{% static './bookingStatic/form.js' %}"></script>
+<script>
+    document.queryCommandValue("#train-detail .back").d
+</script>
 {% endblock %}

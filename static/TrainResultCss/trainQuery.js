@@ -31,16 +31,17 @@ function bookingDataDetail(trainObj, price_list, seat_type){
         <div id="menu-SL" class="seat-detail">
             <ul>
                 <li><span class="date"></span><span class="detail-seat">Tue</span><span
-                    class="detail-price"><a href="booking/api/${trainObj[0].Train_No}/${trainObj[0].id}/${trainObj[0].Station_Code}/${trainObj[1].Station_Code}">Book
+                    class="detail-price" data-form-link="form-${trainObj[0].Train_No}-${seat_type}" onclick="formSubmit(this)"><a href="JavaScript:void(0);">Book
                         ${trainObj[0][seat_type]}
         <div class="hidden hidden-form">
-        <form id="" action="" method="post">
+        <form id="form-${trainObj[0].Train_No}-${seat_type}" action="/booking/" method="post">
+                ${csrf_token}
             <input name="train-no" value="${trainObj[0].Train_No}" type="text">
             <input name="train-id" value="${trainObj[0].id}" type="text">
             <input name="destination" value="${trainObj[0].Station_Code}" type="text">
             <input name="boarding" value="${trainObj[1].Station_Code}" type="text">
             <input name="date" value="${date}" type="text">
-            <input name="${seat_type}" value="${trainObj[0][seat_type]}" type="text">
+            <input name="seat_type" value="${seat_type}" type="text">
             <input name="price" value="${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance) / 10}" type="text">
 
         </form>
@@ -108,4 +109,9 @@ function allSineHide() {
         all_shine_box[i].classList.remove("shine-box");
         // console.table(all_shine_box[i])
     }
+}
+function formSubmit(e){
+    form_id = e.getAttribute("data-form-link")
+    form_DOM = document.querySelector(`#${form_id}`);
+    form_DOM.submit();
 }

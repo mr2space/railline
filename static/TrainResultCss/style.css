@@ -389,7 +389,7 @@
   justify-content: space-between;
   align-items: center;
 }
-span.detail-price button {
+span.detail-price a {
   padding: 8px 20px;
   background-color: transparent;
   border: 1px solid #fff;
@@ -397,8 +397,9 @@ span.detail-price button {
   color: #fff;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none !important;
 }
-span.detail-price button:hover {
+span.detail-price a:hover {
   border: 1px solid rgb(17, 255, 176);
   color: rgb(17, 255, 176);
   background-color: rgba(0, 8, 37, 0.934);

@@ -1,7 +1,7 @@
 let form_section = [
     '#train-detail',
+    '#train-detail-2',
     '#personal-detail',
-    '#personal-detail-2'
 ]
 
 
