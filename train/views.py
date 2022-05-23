@@ -1,5 +1,5 @@
 from curses.ascii import FS
-from datetime import datetime
+import datetime
 from email import message
 from django.http import HttpRequest, HttpResponse ,JsonResponse
 from django.shortcuts import render,redirect
@@ -27,23 +27,26 @@ def trainResultPage(request):
         return redirect('/')
     train_to = request.POST.get('train_query_to')
     train_from = request.POST.get('train_query_from')
-    # train_date = datetime.strptime(request.POST.get(
-    #     'travel_date').replace("-", " ") + " 00:00:00", '%y %m %d %H:%M:%S')
-    train_date = datetime.today()
-    print(request.POST.get('travel_date'),"helllo")
+    train_date = datetime.datetime.strptime(request.POST.get(
+        'travel_date')[2:], '%y-%m-%d')
+    next_date =datetime.datetime.today() + datetime.timedelta(days=1)
+    print(train_date.strftime("%Y/%m/%d"), "helllo")
     navbar = {
         'HNav': 'active-nav'
     }
-    # travel_date_info ={
-    #     'travel_date': train_date or datetime.today().strftime('%x'),
-    #     'travel_month': train_date.strftime('%b') or datetime.today().strftime('%b'),
-    #     'travel_day': train_date.strftime('%a') or datetime.today().strftime('%a')
-    # }
+    travel_date_info ={
+        'travel_date_no': train_date.strftime("%d") or next_date.strftime("%d"),
+        'travel_month_no': train_date.strftime("%m") or next_date.strftime("%m"),
+        'travel_year_no': train_date.strftime("%Y") or next_date.strftime("%Y"),
+        'travel_month': train_date.strftime('%b') or next_date.strftime('%b'),
+        'travel_day': train_date.strftime('%a') or next_date.strftime('%a'),
+    }
+    
     param = {
         "navbar": navbar,
         'train_to': train_to,
         'train_from': train_from,
-        'travel_date_info': request.POST.get('travel_date')
+        'travel_date_info': travel_date_info
     }
     return render(request, 'train/ResultPage/index.html', param)
 

@@ -3,6 +3,7 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'user/login.css' %}">
     <link rel="stylesheet" href="{% static 'TrainResultCss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'TrainResultCss/loader.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 {% endblock %}
 {% block title %}
@@ -18,14 +19,18 @@ Result Page
             <div class="circle-5"></div>
         </div>
     </section>
-    <section data-train-to="{{train_to}}" data-train-from="{{train_from}}" data-train-date = "{{travel_date_info}}" id="result-box">
+    <section data-train-to="{{train_to}}" data-train-from="{{train_from}}" data-train-date = "{{travel_date_info.travel_date}}" data-train-day="{{travel_date_info.travel_day}}" data-train-month="{{travel_date_info.travel_month}}"
+    data-year="{{travel_date_info.travel_year_no}}" data-month="{{travel_date_info.travel_month_no}}" data-date="{{travel_date_info.travel_date_no}}"
+    
+    id="result-box">
         <!--------------------- first-indiviudal-set------------ -->
         
-            <div class="loader">
-                <div class="loader-box">
-                    <div class="loader-gif">
-                        <img src="{% static 'images/backend/Preloader-Gif.gif'%}" alt="loader">
-                    </div>
+            <div class="loader-box">
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
                 
             </div>

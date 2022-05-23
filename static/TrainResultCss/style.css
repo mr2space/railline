@@ -195,27 +195,20 @@
   border: 0;
 }
 
-.loader{
+.loader-box{
   position: absolute;
   left:0;
   top:0;
   width:100%;
   min-width:200px;
   height:100%;
+  z-index:1000;
+  background: rgba(0, 6, 23, 1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.loader-box{
-  background-color: rgba(255, 255, 255, 0.14);
-  width:90px;
-  height: 90px;
-}
-.loader-gif img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-}
+
 .individual-set {
   width: 40%;
   min-width: 300px !important;

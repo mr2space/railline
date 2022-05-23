@@ -42,7 +42,10 @@ Booking System
         </div>
 
         <div id="form">
-            <form action="/train" id="form-csrf">
+            <form action="/booking/payment-pre-process" id="form-csrf">
+                {% csrf_token %}
+                <input type="hidden" disabled value="{{train_info.train_id}}" class="hidden">
+                <input type="hidden" class="hidden" value="{{train_info.seat_limit}}" id="seat-limit">
                 <div id="train-detail" class="">
                     <div class="input-grp">
                         <label for="">Train no</label>
@@ -58,7 +61,7 @@ Booking System
                     </div>
                     <div class="input-grp">
                         <label for="">Date</label>
-                        <input type="date" value="{{train_info.date}}">
+                        <input type="date" id="travel-date" disabled value="{{train_info.date}}">
                     </div>
                     <div class="submit-box">
                         <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1" disabled>back</a>
@@ -68,15 +71,22 @@ Booking System
                     </div>
                 </div>
 
-
-                <div id="train-detail-2">
+                <div id="personal-detail">
                     <div class="input-grp">
-                        <label for="">Seat Type</label>
-                        <input type="text" disabled value="{{train_info.seat_type}}">
+                        <label for="">Name</label>
+                        <input required type="text" placeholder="Full Name">
                     </div>
                     <div class="input-grp">
-                        <label for="">Price</label>
-                        <input type="number" disabled value="{{train_info.price}}">
+                        <label for="">Age</label>
+                        <input type="number" placeholder="Enter Your Age">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Phone No</label>
+                        <input required type="number">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">Email Address</label>
+                        <input required type="email">
                     </div>
                     <div class="submit-box">
                         <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2"
@@ -88,32 +98,23 @@ Booking System
 
 
 
-
-                <div id="personal-detail">
+                <div id="train-detail-2">
+                
                     <div class="input-grp">
-                        <label for="">Name</label>
-                        <input type="text" placeholder="Full Name">
+                        <label for="">Seat Type</label>
+                        <input type="text" disabled value="{{train_info.seat_type}}">
                     </div>
                     <div class="input-grp">
-                        <label for="">Age</label>
-                        <input type="number" placeholder="Enter Your Age">
-                    </div>
-                    <div class="input-grp">
-                        <label for="">Phone No</label>
-                        <input type="number">
-                    </div>
-                    <div class="input-grp">
-                        <label for="">No of Tickets</label>
-                        <input type="number">
+                        <label for="">Price</label>
+                        <input type="number" disabled value="{{train_info.price}}">
                     </div>
                     <div class="submit-box">
-                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2"
-                                onclick="allBackBtnFun(this)" disabled>back</a></div>
-                        <div class="glow-btn"><a href="javascript:void(0)" data-pos="2" class="next"
+                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="3" onclick="allBackBtnFun(this)"
+                                disabled>back</a></div>
+                        <div class="glow-btn"><a href="javascript:void(0)" data-pos="3" class="next"
                                 onclick="sumbitTheForm()">Submit</a></div>
                     </div>
                 </div>
-
             </form>
         </div>
 

@@ -14,7 +14,9 @@ body{
     overflow: hidden;
 }
 
-
+.hidden{
+    display:none;
+}
 
 /* -------------------------------background css start here----------------------------------- */
 

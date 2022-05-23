@@ -1,7 +1,7 @@
 let form_section = [
     '#train-detail',
-    '#train-detail-2',
     '#personal-detail',
+    '#train-detail-2',
 ]
 
 
@@ -22,5 +22,6 @@ function allNextBtnFun(e){
 }
 
 function sumbitTheForm(){
+    let booking_seat_cout = document.
     document.querySelector("#form-csrf").submit();
 }

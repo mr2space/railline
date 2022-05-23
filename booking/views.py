@@ -11,6 +11,10 @@ def userBooking(request):
     if request.method != 'POST':
         return HttpResponse("Failed")
     param = {}
+    train_id = int(request.POST.get("train-id"))
+    seat_limit = list(trainModel.trainRecord.objects.filter(id=train_id).values())
+    seat_limit = seat_limit[0]
+    print(seat_limit['Seat_SL'])
     param['train_info'] = {
         'train_no': request.POST.get("train-no"),
         'train_id': request.POST.get("train-id"),
@@ -19,9 +23,10 @@ def userBooking(request):
         'date': request.POST.get("date"),
         'seat_type': request.POST.get("seat_type"),
         'price': request.POST.get("price"),
+        'seat_limit': seat_limit['Seat_SL'],
     }
-    print(param['train_info'])
-    #this is just 0.5% of work
     return render(request,'./booking/form.html',param)
     
-    
+def bookingPreProcessing(request):
+    pass
+
