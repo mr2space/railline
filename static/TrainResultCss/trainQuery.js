@@ -33,7 +33,7 @@ function bookingDataDetail(trainObj, price_list, seat_type){
             <ul>
                 <li><span class="date"></span><span class="detail-seat">Tue</span><span
                     class="detail-price" data-form-link="form-${trainObj[0].Train_No}-${seat_type}" onclick="formSubmit(this)"><a href="JavaScript:void(0);">Book
-                        ${trainObj[0][seat_type]}
+                        ${trainObj[0][seat_type]} </a></span>
         <div class="hidden hidden-form">
         <form id="form-${trainObj[0].Train_No}-${seat_type}" action="/booking/" method="post">
                 ${csrf_token}
@@ -47,7 +47,7 @@ function bookingDataDetail(trainObj, price_list, seat_type){
 
         </form>
         </div>
-                                        </a></span>
+                                       
                     </li>
                 </ul>
             </div>

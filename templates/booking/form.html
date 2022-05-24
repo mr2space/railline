@@ -42,29 +42,30 @@ Booking System
         </div>
 
         <div id="form">
-            <form action="/booking/payment-pre-process" id="form-csrf">
+            <form action="/booking/payment-pre-process" method='post' id="form-csrf">
                 {% csrf_token %}
-                <input type="hidden" disabled value="{{train_info.train_id}}" class="hidden">
-                <input type="hidden" class="hidden" value="{{train_info.seat_limit}}" id="seat-limit">
+                <input type="hidden" name="train_id" value="{{train_info.train_id}}" class="hidden">
+                <input type="hidden" name="seat_limit" class="hidden" value="{{train_info.seat_limit}}" id="seat-limit">
+                <input type="hidden" name="seat_price" id="seat-price" class="hidden" value="{{train_info.seat_price}}" id="seat-price">
                 <div id="train-detail" class="">
                     <div class="input-grp">
                         <label for="">Train no</label>
-                        <input type="text" disabled value="{{train_info.train_no}}">
+                        <input name="train_no" type="text" value="{{train_info.train_no}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Boarding</label>
-                        <input type="text" disabled value="{{train_info.boarding}}">
+                        <input name="boarding" type="text" value="{{train_info.boarding}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Destinations</label>
-                        <input type="text" disabled value="{{train_info.destination}}">
+                        <input name="destination" type="text" value="{{train_info.destination}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Date</label>
-                        <input type="date" id="travel-date" disabled value="{{train_info.date}}">
+                        <input name="date" type="date"  id="travel-date" value="{{train_info.date}}">
                     </div>
                     <div class="submit-box">
-                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1" disabled>back</a>
+                        <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1">back</a>
                         </div>
                         <div class="glow-btn"><a href="javascript:void(0)" data-pos="1" class="next"
                                 onclick="allNextBtnFun(this)">Next</a></div>
@@ -74,19 +75,19 @@ Booking System
                 <div id="personal-detail">
                     <div class="input-grp">
                         <label for="">Name</label>
-                        <input required type="text" placeholder="Full Name">
+                        <input required name="full_name" type="text" placeholder="Full Name">
                     </div>
                     <div class="input-grp">
                         <label for="">Age</label>
-                        <input type="number" placeholder="Enter Your Age">
+                        <input type="number" name="age" placeholder="Enter Your Age">
                     </div>
                     <div class="input-grp">
                         <label for="">Phone No</label>
-                        <input required type="number">
+                        <input required name="phone_no" type="number">
                     </div>
                     <div class="input-grp">
                         <label for="">Email Address</label>
-                        <input required type="email">
+                        <input required name="email" type="email">
                     </div>
                     <div class="submit-box">
                         <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="2"
@@ -102,15 +103,19 @@ Booking System
                 
                     <div class="input-grp">
                         <label for="">Seat Type</label>
-                        <input type="text" disabled value="{{train_info.seat_type}}">
+                        <input type="text" name="seat_type" value="{{train_info.seat_type}}">
+                    </div>
+                    <div class="input-grp">
+                        <label for="">No of Ticket</label>
+                        <input name="ticket_no" required id="ticket_no" type="number">
                     </div>
                     <div class="input-grp">
                         <label for="">Price</label>
-                        <input type="number" disabled value="{{train_info.price}}">
+                        <input name="price" type="number" id="price" value="{{train_info.seat_price}}">
                     </div>
                     <div class="submit-box">
                         <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="3" onclick="allBackBtnFun(this)"
-                                disabled>back</a></div>
+                            >back</a></div>
                         <div class="glow-btn"><a href="javascript:void(0)" data-pos="3" class="next"
                                 onclick="sumbitTheForm()">Submit</a></div>
                     </div>
@@ -131,7 +136,5 @@ Booking System
 </section>
 
 <script src="{% static './bookingStatic/form.js' %}"></script>
-<script>
-    document.queryCommandValue("#train-detail .back").d
-</script>
+<script src="{% static './bookingStatic/response.js' %}"></script>
 {% endblock %}

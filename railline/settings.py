@@ -161,3 +161,8 @@ EMAIL_USE_TLS = True
 #----------- WARNING !!!! DO NOT DISCLOSE ----------------------------
 EMAIL_HOST_USER = 'mrspace.pro@gmail.com'
 EMAIL_HOST_PASSWORD = '0rail0line0!'
+
+
+STRIPE_SECRET_KEY = 'sk_test_51KzBjHSJFnoDM4GlXXGa7rFQ5DILd2iKlvzArDbgGOyJPey7zQEK6hltpzCiahiJ1WM3Fa3ddyYnGoAJ4jNkmwbu00n2ur6mGV'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51KzBjHSJFnoDM4Gl4GVhmYJmDZ1U41dmN0U0QfQ45qLPdNTwabAqxGSfPO4O2UBpt07Mpw3SaVRvv4umRgDZgLT200haNu7j0F'

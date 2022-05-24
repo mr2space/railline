@@ -22,6 +22,6 @@ function allNextBtnFun(e){
 }
 
 function sumbitTheForm(){
-    let booking_seat_cout = document.
+    
     document.querySelector("#form-csrf").submit();
 }
