@@ -8,6 +8,7 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from railline.settings import STRIPE_SECRET_KEY, STRIPE_PUBLIC_KEY
 import stripe
+import json
 stripe.api_key = STRIPE_SECRET_KEY
 
 @login_required(login_url='/user/login')
@@ -107,7 +108,6 @@ def payment_webhook_view(request):
 
   # For now, you only need to print out the webhook payload so you can see
   # the structure.
-  print(payload)
-
+  print(json.dump(payload))
   return HttpResponse(status=200)
 

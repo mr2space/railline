@@ -14,7 +14,7 @@ function divSeatBLackBox(trainObj, price_list, seat_type) {
                     <div class="js-shine-box shine-box"></div>
                     <div class="flex">
                         <div class="seat-name">${seat_type.substring(5,7)}</div>
-                        <div class="price">${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance) / 10}</div>
+                        <div class="price">${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)}</div>
                     </div>
                     <div class=${seatSuccesFail(trainObj[0][seat_type])}>Available <span>${trainObj[0][seat_type]}</span> </div>
                 </div>`
