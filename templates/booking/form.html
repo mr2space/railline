@@ -50,19 +50,23 @@ Booking System
                 <div id="train-detail" class="">
                     <div class="input-grp">
                         <label for="">Train no</label>
-                        <input name="train_no" type="text" value="{{train_info.train_no}}">
+                        <input name="train_no" type="hidden" value="{{train_info.train_no}}">
+                        <input name="train_no" disabled  type="text" value="{{train_info.train_no}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Boarding</label>
-                        <input name="boarding" type="text" value="{{train_info.boarding}}">
+                        <input name="boarding" type="hidden" value="{{train_info.boarding}}">
+                        <input name="boarding" disabled type="text" value="{{train_info.boarding}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Destinations</label>
-                        <input name="destination" type="text" value="{{train_info.destination}}">
+                        <input name="destination" type="hidden" value="{{train_info.destination}}">
+                        <input name="destination" disabled type="text" value="{{train_info.destination}}">
                     </div>
                     <div class="input-grp">
                         <label for="">Date</label>
-                        <input name="date" type="date"  id="travel-date" value="{{train_info.date}}">
+                        <input name="date" type="hidden"  id="travel-date" value="{{train_info.date}}">
+                        <input name="date" type="date" disabled  id="travel-date" value="{{train_info.date}}">
                     </div>
                     <div class="submit-box">
                         <div class="glow-btn"><a href="javascript:void(0)" class="back" data-pos="1">back</a>
@@ -103,7 +107,8 @@ Booking System
                 
                     <div class="input-grp">
                         <label for="">Seat Type</label>
-                        <input type="text" name="seat_type" value="{{train_info.seat_type}}">
+                        <input type="hidden" name="seat_type" value="{{train_info.seat_type}}">
+                        <input type="text" name="seat_type" disabled value="{{train_info.seat_type}}">
                     </div>
                     <div class="input-grp">
                         <label for="">No of Ticket</label>

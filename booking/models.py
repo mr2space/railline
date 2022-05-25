@@ -43,7 +43,8 @@ class PostPassangerData(models.Model):
     personal_phone_no = models.IntegerField()
     personal_address = models.TextField()
     #SEAT INFO ------------------------------------------------
-    seat_id = models.IntegerField()
+    payment_id = models.CharField(max_length=200)
+    seat_id = models.AutoField()
     seat_total_count = models.IntegerField()
     seat_type = models.CharField(max_length=30)
     seat_price = models.FloatField()
