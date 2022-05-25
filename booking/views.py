@@ -6,7 +6,7 @@ from .models import PrePassangerData,PostPassangerData
 from train import models as trainModel
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from railline.settings import STRIPE_SECRET_KEY, STRIPE_PUBLIC_KEY
+from railline.settings import STRIPE_SECRET_KEY, STRIPE_PUBLIC_KEY,STRIPE_WEBHOOK_KEY
 import stripe
 import json
 stripe.api_key = STRIPE_SECRET_KEY
@@ -110,7 +110,7 @@ def payment_webhook_view(request):
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
+            payload, sig_header, STRIPE_SECRET_KEY
         )
     except ValueError as e:
         # Invalid payload
@@ -118,6 +118,7 @@ def payment_webhook_view(request):
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
+    
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         fulfill_order(session)

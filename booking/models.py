@@ -43,8 +43,8 @@ class PostPassangerData(models.Model):
     personal_phone_no = models.IntegerField()
     personal_address = models.TextField()
     #SEAT INFO ------------------------------------------------
-    payment_id = models.CharField(max_length=200)
-    seat_id = models.AutoField()
+    payment_id = models.CharField(max_length=200,primary_key=True)
+    seat_id = models.CharField(max_length=100)
     seat_total_count = models.IntegerField()
     seat_type = models.CharField(max_length=30)
     seat_price = models.FloatField()
@@ -52,3 +52,6 @@ class PostPassangerData(models.Model):
     boarding = models.CharField(max_length=200)
     destination = models.CharField(max_length=200)
     date = models.CharField(max_length=200)
+    
+    def setSeat(self):
+        self.seat_id = self.id
