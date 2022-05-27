@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Slabo+27px&display=swap');
+
+
+:root{
+    --white:#fbf9fa;
+    --lite-white:rgba(251, 249, 250,0.5);
+    --primary-red:#fd0054;
+    --secondary-red:#a80038;
+    --black:#1e2836;
+    --heading-font: 'Slabo 27px', serif;
+    --font:'Poppins', sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+body{
+    background: var(--white);
+    width:100vw;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+#navbar{
+    position: sticky;
+    top:0;
+    left:0;
+    width:100%;
+    max-height:7vh;
+    min-height: 50px;
+    padding:5px 40px;
+    background: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.brand-img{
+    width:150px;
+    height:100%;
+}
+.brand-img img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position: center;
+}
+.links *{
+    display: inline-block;
+    text-decoration: none;
+    color:var(--white);
+    transition: all 0.2s;
+}
+.links li:hover *{
+    color:var(--primary-red)
+}
+.user:hover *{
+    color: var(--primary-red);
+}
+.links ul{
+    margin-right: 40px;
+    list-style: none;
+    
+}
+.links ul li{
+    margin-left: 25px;
+}
+.hamberger{
+    display: none;
+    padding:5px 10px;
+    color:white;
+}
+.hamberger .bi{
+    font-size: 1.2rem;
+}
+
+#side-nav{
+    position: absolute;
+    left:100%;
+    top:0;
+    height:100vh;
+    min-width: 300px;
+    background: var(--black);
+    z-index: 100;
+}
+#side-nav *{
+text-decoration: none;
+    list-style: none;
+    color:var(--white);
+    font-size: 1.1rem;
+}
+#side-nav .side-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:30vh;
+    width:100%;
+    
+    
+}
+.side-links li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height:40px;
+    margin-top: 10px;
+}
+.side-links li:hover{
+background: var(--primary-red);
+}
+.side-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width:300px;
+    height:40px;
+}
+.side-user:hover,.side-user:hover a{
+    background: var(--primary-red);
+}
+
+
+@media screen and (max-width:740px) {
+    .links {
+        display: none;
+    }
+    .hamberger{
+        display:block;
+        padding:5px 10px;
+    }
+    .body{
+        height:100vh;
+        overflow: hidden;
+    }
+}
