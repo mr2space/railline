@@ -1,0 +1,84 @@
+{
+    "id": "evt_1L3HB0SJFnoDM4GlzFHJ3BhW",
+    "object": "event",
+    "api_version": "2020-08-27",
+    "created": 1653473450,
+    "data": {
+        "object": {
+            "id": "cs_test_a1zRpEy7z0gEhBcY9Wd2Pe3aRNJJWLnhozuMowx0YRBcmN4JWs9cQ3AVJz",
+            "object": "checkout.session",
+            "after_expiration": null,
+            "allow_promotion_codes": null,
+            "amount_subtotal": 340000,
+            "amount_total": 340000,
+            "automatic_tax": {
+                "enabled": false,
+                "status": null
+            },
+            "billing_address_collection": null,
+            "cancel_url": "http://127.0.0.1:8000/booking/cancel",
+            "client_reference_id": null,
+            "consent": null,
+            "consent_collection": null,
+            "currency": "inr",
+            "customer": "cus_Lkmkiaqwhzrq3o",
+            "customer_creation": "always",
+            "customer_details": {
+                "address": {
+                    "city": null,
+                    "country": "IN",
+                    "line1": null,
+                    "line2": null,
+                    "postal_code": null,
+                    "state": null
+                },
+                "email": "princegoswami.space@gmail.com",
+                "name": "Prince",
+                "phone": null,
+                "tax_exempt": "none",
+                "tax_ids": []
+            },
+            "customer_email": null,
+            "expires_at": 1653559821,
+            "livemode": false,
+            "locale": null,
+            "metadata": {
+                "product_id": "29"
+            },
+            "mode": "payment",
+            "payment_intent": "pi_3L3HAXSJFnoDM4Gl0KPWQpEL",
+            "payment_link": null,
+            "payment_method_options": {},
+            "payment_method_types": [
+                "card"
+            ],
+            "payment_status": "paid",
+            "phone_number_collection": {
+                "enabled": false
+            },
+            "recovered_from": null,
+            "setup_intent": null,
+            "shipping": null,
+            "shipping_address_collection": null,
+            "shipping_options": [],
+            "shipping_rate": null,
+            "status": "complete",
+            "submit_type": null,
+            "subscription": null,
+            "success_url": "http://127.0.0.1:8000/booking/success",
+            "total_details": {
+                "amount_discount": 0,
+                "amount_shipping": 0,
+                "amount_tax": 0
+            },
+            "url": null
+        }
+    },
+    "livemode": false,
+    "pending_webhooks": 2,
+    "request": {
+        "id": null,
+        "idempotency_key": null
+    },
+    "type": "checkout.session.completed"
+}

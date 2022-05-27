@@ -33,6 +33,32 @@ def userBooking(request):
     return render(request,'./booking/form.html',param)
 
 
+def paymentTest(request):
+    if request.method != "POST":
+        return render(request,"booking/payment-test.html");
+    checkout_session = stripe.checkout.Session.create(
+        line_items=[
+            {
+                'price_data': {
+                    'currency': 'inr',
+                    'unit_amount': 1000,
+                    'product_data': {
+                        'name':"Famous Product",
+                    },
+                },
+                'quantity': 2,
+            },
+        ],
+        metadata={
+            "product_id": 25
+        },
+        mode='payment',
+        success_url='http://127.0.0.1:8000/booking/success',
+        cancel_url='http://127.0.0.1:8000/booking/cancel',
+    )
+    return redirect(checkout_session.url, code=303)
+
+
 def paymentPreProcess(request):
     if request.method != "POST":
         return HttpResponse("failed Because of not Post Method")
@@ -95,36 +121,62 @@ def storePrePayment(request):
     
     
 def success(request):
-    return HttpResponse("Success")
-
+    return render(request,'booking/success.html')
 
 def cancel(request):
-    return HttpResponse("cancel")
+    return render(request, 'booking/failed.html')
 
 
 @csrf_exempt
-def payment_webhook_view(request):
+def stripeWebhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, STRIPE_SECRET_KEY
+            payload, sig_header, STRIPE_WEBHOOK_KEY
         )
     except ValueError as e:
         # Invalid payload
-        return HttpResponse(status=400)
+        return HttpResponse(status=401)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        return HttpResponse(status=400)
-    
+        return HttpResponse(status=402)
+
+  # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
+
+        # Fulfill the purchase...
         fulfill_order(session)
-        print(json.dump(payload))
-        # Passed signature verification
+  # Passed signature verification
     return HttpResponse(status=200)
 
-def fulfill_order(s):
-    print("under Process")
+
+def fulfill_order(session):
+    product_id = session["metadata"]["product_id"]
+    post_payment_id = session["payment_intent"]
+    try:
+        prePaymentInfo = PrePassangerData.objects.get(id=product_id);
+    except:
+        print("not found pre payment data!")
+    try:
+        postPaymentModel = PostPassangerData(
+            user_id=prePaymentInfo.user_id,
+            personal_full_name=prePaymentInfo.personal_full_name,
+            personal_age=prePaymentInfo.personal_age,
+            personal_email=prePaymentInfo.personal_email,
+            personal_phone_no=prePaymentInfo.personal_phone_no,
+            payment_id=post_payment_id,
+            seat_total_count=prePaymentInfo.seat_total_count,
+            seat_type=prePaymentInfo.seat_type,
+            seat_price=prePaymentInfo.seat_price,
+            train_id=prePaymentInfo.train_id,
+            boarding=prePaymentInfo.boarding,
+            destination=prePaymentInfo.destination,
+            date=prePaymentInfo.date,
+        )
+        postPaymentModel.save()
+    except Exception as e:
+        print("error ay storing the postPayment",e)

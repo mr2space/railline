@@ -40,7 +40,7 @@ class PostPassangerData(models.Model):
     personal_full_name = models.CharField(max_length=200)
     personal_age = models.IntegerField()
     personal_email = models.EmailField()
-    personal_phone_no = models.IntegerField()
+    personal_phone_no = models.BigIntegerField()
     personal_address = models.TextField()
     #SEAT INFO ------------------------------------------------
     payment_id = models.CharField(max_length=200,primary_key=True)

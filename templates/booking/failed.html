@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'bookingStatic/failed.css' %}">
+        <link rel="stylesheet" href="{% static 'bookingStatic/Navbar.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+        <section id="navbar">
+            <div class="links">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Contact us</a></li>
+                    <li><a href="">About us</a></li>
+                </ul>
+                <div class="user">
+                    <a href="">Mr.Prince</a>
+                </div>
+            </div>
+            <div class="brand-img">
+                <a href=""><img src="media\railline-logos_white.png" alt="Brand Logo" srcset=""></a>
+            </div>
+            <div class="hamberger">
+                <i class="bi bi-list"></i>
+            </div>
+            <div class="" id="side-nav">
+                <div class="side-links">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Contact us</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    <div class="side-user">
+                        <a href="">Mr.Prince</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="failed-page">
+            <img src="{% static 'bookingStatic/background-2.png' %}" class="background-img" alt="">
+            <div class="failed-image">
+                <img src="{% static 'ailed-css.png' %}" alt="space" srcset="">
+            </div>
+            <div class="payment-info">
+                <p> <span>Failed</span> at Payment Proccess !</p>
+                <div class="button-hover">
+                    <a href="">Back to Home<span class="dot-box"><i class="bi bi-three-dots-vertical"></i>
+                            <i class="bi bi-three-dots-vertical"></i><i class="bi bi-three-dots-vertical"></i></span> </a>
+                </div>
+        
+            </div>
+        </section>
+
+
+</body>
+</html>
