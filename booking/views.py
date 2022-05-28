@@ -59,6 +59,7 @@ def paymentTest(request):
     return redirect(checkout_session.url, code=303)
 
 
+@login_required(login_url='/user/login')
 def paymentPreProcess(request):
     if request.method != "POST":
         return HttpResponse("failed Because of not Post Method")
@@ -94,8 +95,7 @@ def paymentPreProcess(request):
     return redirect(checkout_session.url, code=303)
 
     
-
-
+@login_required(login_url='/user/login')
 def storePrePayment(request):
     try:
         print(request.POST.get('train_id'),list(request))
@@ -154,6 +154,7 @@ def stripeWebhook(request):
     return HttpResponse(status=200)
 
 
+@login_required(login_url='/user/login')
 def fulfill_order(session):
     product_id = session["metadata"]["product_id"]
     post_payment_id = session["payment_intent"]
@@ -180,3 +181,11 @@ def fulfill_order(session):
         postPaymentModel.save()
     except Exception as e:
         print("error ay storing the postPayment",e)
+
+
+@login_required(login_url='/user/login')
+def userBill(request):
+    user_id = request.user
+    post_payment_model = PostPassangerData.objects.filter(user_id = user_id).values()
+    return HttpResponse(f"{list(post_payment_model)[0]}")
+    
