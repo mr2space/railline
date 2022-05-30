@@ -1,7 +1,8 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
-
+import datetime
 
 class PassangerPersonalData(models.Model):
     def __str__(self):
@@ -52,6 +53,8 @@ class PostPassangerData(models.Model):
     boarding = models.CharField(max_length=200)
     destination = models.CharField(max_length=200)
     date = models.CharField(max_length=200)
+    formation_time = models.DateTimeField(
+        auto_now=True)
     
     def setSeat(self):
         self.seat_id = self.id

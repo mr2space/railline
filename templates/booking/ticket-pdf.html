@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bookingStatic/ticket-pdf.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <section id="container-pdf">
+        <div class="background-color">
+
+        </div>
+        <img src="{% static 'bookingStatic/background-2.png'%}" class="background-img" alt="">
+        <div class="heading brand-img">
+            <img src="{% static 'user/images/railline-logos_white.png' %}" alt="railline">
+        </div>
+        <div class="heading">
+            <h3>Payment</h3>
+            <div class="row">
+                <div class="left col-2">
+                    Payment ID
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.payment_id}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    Amount (inr)
+                </div>
+                <div class="right col-6">
+                    Rs  {{total_price}}
+                </div>
+            </div>
+        </div>
+<div class="heading">
+            <h3>Train Details</h3>
+            <div class="row">
+                <div class="left col-2">
+                    Train No
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.train_id}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    Bording
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.boarding}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    destination
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.destination}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    date
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.date}}
+                </div>
+            </div>
+        </div>
+        <div class="heading">
+            <h3>Personal Details</h3>
+            <div class="row">
+                <div class="left col-2">
+                    Name
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.personal_full_name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    Phone No
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.personal_phone_no}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    Email
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.personal_email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="left col-2">
+                    PNR
+                </div>
+                <div class="right col-6">
+                    {{detailed_list.payment_id}}
+                </div>
+            </div>
+        </div>
+
+<div class="heading">
+    <h3>Seat Details</h3>
+    <div class="row">
+        <div class="left col-2">
+            Seat Type
+        </div>
+        <div class="right col-6">
+            {{detailed_list.seat_type}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="left col-2">
+            No of Seat
+        </div>
+        <div class="right col-6">
+            {{detailed_list.seat_total_count}}
+        </div>
+    </div>
+</div>
+    </section>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var root = document.querySelector("#container-pdf")
+    html2pdf().from(root).save()
+</script> 
+</body>
+</html>

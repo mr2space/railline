@@ -29,7 +29,6 @@ def userBooking(request):
         'seat_price': float(request.POST.get("price")),
         'seat_limit': int(seat_limit['Seat_SL']),
     }
-    print(param)
     return render(request,'./booking/form.html',param)
 
 
@@ -149,17 +148,21 @@ def stripeWebhook(request):
         session = event['data']['object']
 
         # Fulfill the purchase...
+        
         fulfill_order(session)
+        
+            
   # Passed signature verification
     return HttpResponse(status=200)
 
 
-@login_required(login_url='/user/login')
 def fulfill_order(session):
     product_id = session["metadata"]["product_id"]
     post_payment_id = session["payment_intent"]
     try:
         prePaymentInfo = PrePassangerData.objects.get(id=product_id);
+        prePaymentInfo = list(prePaymentInfo)[0]
+        print(prePaymentInfo)
     except:
         print("not found pre payment data!")
     try:
@@ -182,10 +185,16 @@ def fulfill_order(session):
     except Exception as e:
         print("error ay storing the postPayment",e)
 
-
 @login_required(login_url='/user/login')
 def userBill(request):
     user_id = request.user
-    post_payment_model = PostPassangerData.objects.filter(user_id = user_id).values()
-    return HttpResponse(f"{list(post_payment_model)[0]}")
+    post_payment_model = PostPassangerData.objects.filter(
+        user_id=user_id).latest('formation_time')
+    post_payment_model = PostPassangerData.objects.filter(
+        payment_id=post_payment_model.payment_id).values()
+    param = {}
+    param['detailed_list'] = list(post_payment_model)[0]
+    print(param)
+    param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
+    return render(request,"booking/ticket-pdf.html",param)
     

@@ -14,7 +14,7 @@ function divSeatBLackBox(trainObj, price_list, seat_type) {
                     <div class="js-shine-box shine-box"></div>
                     <div class="flex">
                         <div class="seat-name">${seat_type.substring(5,7)}</div>
-                        <div class="price">${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)}</div>
+                        <div class="price">${parseFloat(price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)).toFixed(2) }</div>
                     </div>
                     <div class=${seatSuccesFail(trainObj[0][seat_type])}>Available <span>${trainObj[0][seat_type]}</span> </div>
                 </div>`
@@ -26,7 +26,6 @@ function seatSuccesFail(number){
 }
 function bookingDataDetail(trainObj, price_list, seat_type){
     date_obj = new Date(root_box.getAttribute('data-year'), root_box.getAttribute('data-month'), root_box.getAttribute('data-date'))
-    console.log(date_obj)
     let inner_HTML_text = `
     <div id = "detail-${trainObj[0].Train_No}-${seat_type}" class="list-seat-type hidden" >
         <div id="menu-SL" class="seat-detail">
@@ -39,11 +38,11 @@ function bookingDataDetail(trainObj, price_list, seat_type){
                 ${csrf_token}
             <input name="train-no" value="${trainObj[0].Train_No}" type="text">
             <input name="train-id" value="${trainObj[0].id}" type="text">
-            <input name="destination" value="${trainObj[0].Station_Code}" type="text">
-            <input name="boarding" value="${trainObj[1].Station_Code}" type="text">
+            <input name="destination" value="${trainObj[1].Station_Code}" type="text">
+            <input name="boarding" value="${trainObj[0].Station_Code}" type="text">
             <input name="date" value="${date_obj.toISOString().substring(0, 10)}" type="date">
             <input name="seat_type" value="${seat_type}" type="text">
-            <input name="price" value="${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance) / 10}" type="text">
+            <input name="price" value="${price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)}" type="text">
 
         </form>
         </div>
