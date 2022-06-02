@@ -3,7 +3,7 @@
 
 :root{
     --white:#fbf9fa;
-    --lite-white:rgba(251, 249, 250,0.5);
+    --lite-white:rgba(251, 249, 250,0.75);
     --primary-red:#fd0054;
     --secondary-red:#a80038;
     --black:#1e2836;
@@ -19,7 +19,7 @@
 }
 
 body{
-    background: var(--white);
+    background: linear-gradient(315deg, rgba(7,208,160,1) 0%, rgba(0,20,130,1) 89%);
     width:100vw;
     overflow-x: hidden;
     min-height: 100vh;
@@ -72,7 +72,7 @@ h3{
 .heading{
     width:100%;
     min-height:50px;
-    border:1px solid black;
+    border:1px solid #000;
     margin-top: 30px;
 }
 .heading.brand-img{
@@ -87,7 +87,7 @@ h3{
 
 .heading.brand-img img{
     width:150px;
-    filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.668));
+    /* filter: drop-shadow(2px 4px 5px rgba(0, 0, 0, 0.668)); */
 }
 
 .heading h3{
