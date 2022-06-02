@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {%load static%}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "user/user-base.html" %}
+{%load static %}
+{% block css %}
     <link rel="stylesheet" href="{% static 'bookingStatic/Navbar.css' %}">
     <link rel="stylesheet" href="{% static 'bookingStatic/success.css' %}">
+    <link rel="stylesheet" href="{% static './bookingStatic/background.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-    <title>Document</title>
-</head>
-<body>
-    <section id="navbar">
+{% endblock %}
+
+{% block title %}
+PAYMENT SUCCESS 
+{% endblock %}
+    {% comment %} <section id="navbar">
         <div class="links">
             <ul>
                 <li><a href="">Home</a></li>
@@ -41,8 +40,9 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section> {% endcomment %}
+{% block root %} 
+<section id="background"></section>
     <section id="success-page">
         <img src="{% static 'bookingStatic/background-2.png' %}" class="background-img" alt="">
         <div class="success-image">
@@ -61,7 +61,4 @@
             
         </div>
     </section>
-
-
-</body>
-</html>
+{% endblock %}

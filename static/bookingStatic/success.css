@@ -6,6 +6,10 @@
     --lite-white:rgba(251, 249, 250,0.5);
     --primary-red:#fd0054;
     --secondary-red:#a80038;
+    --glow-red:#FF033E;
+    --bs-primary:#00B0FF;
+    --bs-success: #18BD82;
+    --success: #1eff45;
     --black:#1e2836;
     --heading-font: 'Slabo 27px', serif;
     --font:'Poppins', sans-serif;
@@ -24,6 +28,16 @@ body{
     overflow: hidden;
     min-height: 100vh;
 }
+
+@keyframes hsl-rotate {
+    0%{
+        filter:hue-rotate(0deg);
+    }
+    100%{
+        filter:hue-rotate(110deg);
+    }
+}
+
 #success-page{
     width:100%;
     height:100%;
@@ -63,21 +77,22 @@ body{
 .payment-info p{
     margin-top: 50px;
     margin-bottom: 20px;
-    font-size: 1.12rem;
+    font-size: 1.2rem;
+    color:var(--white);
 }
 
 .payment-info a{
     position: relative;
     padding:5px 40px ;
-    border: 1px solid red;
+    border: 1px solid #00fa9a;
     margin-top: 10px;
     text-decoration: none;
     text-align: center;
     color:var(--white);
     font-size: 1.2rem;
     border-radius: 4px;
-    background:var(--primary-red);
-    box-shadow: 0 5px 15px 0 var(--primary-red);
+    background:var(--success);
+    box-shadow: 0 5px 15px 0 var(--success);
     transition: all 0.2s;
     animation: bn13bouncy 5s infinite linear;
 }
@@ -122,7 +137,11 @@ body{
 }
 .button-hover:hover a{
     animation: linear;
-    box-shadow: 0 2px 7px 0 var(--primary-red);
+    background: var(--success);
+    box-shadow: 0 0 5px var(--success),
+        0 0 15px var(--success),
+        0 0 30px var(--success),
+        0 0 60px var(--success);
 }
 
 
@@ -140,7 +159,7 @@ body{
     padding: 0;
     margin: 0;
     font-size: 1.2rem;
-    color:white;
+    color:var(--white);
 }
 .dot-box i:nth-child(3){
     right:5px;
