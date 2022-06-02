@@ -6,6 +6,10 @@
     --lite-white:rgba(251, 249, 250,0.5);
     --primary-red:#fd0054;
     --secondary-red:#a80038;
+    --glow-red:#FF033E;
+    --bs-primary:#00B0FF;
+    --bs-success: #18BD82;
+    --success: #1eff45;
     --black:#1e2836;
     --heading-font: 'Slabo 27px', serif;
     --font:'Poppins', sans-serif;
@@ -49,12 +53,16 @@
     text-align: center;
 }
 .payment-info p{
+    min-width:315px;
     margin-top: 50px;
     margin-bottom: 20px;
-    font-size: 1.12rem;
+    font-size: 1.2rem;
+    color:white;
 }
 .payment-info p span{
     color:var(--primary-red);
+    font-weight: 500;
+    filter:drop-shadow( 1px 1px 1px var(--secondary-red));
 }
 .payment-info a{
     position: relative;
@@ -62,11 +70,11 @@
     margin-top: 10px;
     text-decoration: none;
     text-align: center;
-    color:var(--white);
+    color:var(--black);
     font-size: 1.2rem;
     border-radius: 4px;
-    background:var(--primary-red);
-    box-shadow: 0 5px 15px 0 var(--primary-red);
+    background:var(--white);
+    box-shadow: 0 5px 15px 0 var(--black);
     transition: all 0.2s;
     animation: bn13bouncy 5s infinite linear;
 }
@@ -111,7 +119,12 @@
 }
 .button-hover:hover a{
     animation: linear;
-    box-shadow: 0 2px 7px 0 var(--primary-red);
+    background: var(--white);
+    box-shadow: 0 0 5px var(--white),
+        0 0 15px var(--white),
+        0 0 30px var(--white),
+        0 0 60px var(--white);
+    color:black;
 }
 
 
@@ -129,7 +142,7 @@
     padding: 0;
     margin: 0;
     font-size: 1.2rem;
-    color:white;
+    color:var(--primary-red);
 }
 .dot-box i:nth-child(3){
     right:5px;
