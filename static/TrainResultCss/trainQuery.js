@@ -30,7 +30,9 @@ function bookingDataDetail(trainObj, price_list, seat_type){
     <div id = "detail-${trainObj[0].Train_No}-${seat_type}" class="list-seat-type hidden" >
         <div id="menu-SL" class="seat-detail">
             <ul>
-                <li><span class="date"></span><span class="detail-seat">Tue</span><span
+                <li>
+                
+                <span class="date">${root_box.getAttribute("data-date")} ${root_box.getAttribute("data-train-month")} ${root_box.getAttribute("data-year")}</span><span class="detail-seat">${root_box.getAttribute("data-train-day")}</span><span
                     class="detail-price" data-form-link="form-${trainObj[0].Train_No}-${seat_type}" onclick="formSubmit(this)"><a href="JavaScript:void(0);">Book
                         ${trainObj[0][seat_type]} </a></span>
         <div class="hidden hidden-form">

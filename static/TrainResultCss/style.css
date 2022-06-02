@@ -223,9 +223,6 @@
   font-size: 24px !important;
   transition:  all  0.5s;
 }
-.individual-set *{
-  transition: all  0.5s;
-}
 .timing-box {
   font-size: 12px;
 }
