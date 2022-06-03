@@ -46,6 +46,15 @@ body::-webkit-scrollbar-thumb{
     z-index:100;
 
 }
+.glow-btn-e a:hover{
+    color:black ;
+    background: #fff !important;
+        box-shadow: 0 0 5px #fff ,
+        0 0 15px #fff ,
+        0 0 30px #fff ,
+        0 0 60px #fff ;
+         
+}
 
 /* ----- header img box -------------*/
 .bg-success a:hover {
