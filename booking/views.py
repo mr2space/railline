@@ -197,4 +197,30 @@ def userBill(request):
     print(param)
     param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
     return render(request,"booking/ticket-pdf.html",param)
-    
+
+
+def pnrQuery(request):
+    if request.method != 'POST':
+        return redirect("/")
+    param={}
+    try:
+        user_id = request.user
+        pnr_value = request.POST.get("pnr-box")
+        print(pnr_value)
+        post_payment_model = PostPassangerData.objects.all().filter(
+            payment_id=pnr_value).values()
+        
+        param['detailed_list'] = list(post_payment_model)[0]
+        print(param)
+        param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
+        return render(request, "booking/ticket-pdf.html", param)
+    except Exception as e:
+        print("error at searching", e)
+        param = {}
+        msg = {
+            "heading": "PNR not found!",
+            "body": "Check your pnr"
+        }
+        param['msg'] = msg
+        print(param)
+        return render(request,'index.html',param)

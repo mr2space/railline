@@ -1,4 +1,4 @@
-{% extends "user/user-base.html" %}
+{% extends "base.html" %}
 {%load static %}
 {% block css %}
     
@@ -16,7 +16,7 @@ Railline
             <div class="header-text">
                 <h1>Train Search</h1>
                 <p>Made Easy</p>
-                <div class="action-btn">
+                <div class="action-btn glow-btn-e">
                     <a href="#"><span></span> How We Made It</a>
                 </div>
             </div>
@@ -131,7 +131,7 @@ Railline
 
 
 
-                <form action="/train/pnr/" method='post' class="hidden" id="form-pnr-search">
+                <form action="/booking/pnr" method='POST' class="hidden" id="form-pnr-search">
                             {% csrf_token %}
                     <div class="input-box left-b">
                         <span>PNR</span>
@@ -176,27 +176,6 @@ Railline
 
 {% comment %} <!-- featues -------------------------------------------------- --> {% endcomment %}
 
-<section id="features ">
-    <div class="heading-text">
-        <span>FEATURES</span><br>
-        <h2>WHY CHOOSE US</h2>
-    </div>
-
-
-    <div class="features-content">
-        <div class="column text">
-            <div class="feature">
-                <div class="subheading">
-                    Experinced Staff
-                </div>
-                <div class="para">
-                    <span><i class="bi bi-shield-shaded"></i></span>
-                    <p>Years of Experience</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
     <script>
         function radiochecked(myradio){
