@@ -58,3 +58,8 @@ class PostPassangerData(models.Model):
     
     def setSeat(self):
         self.seat_id = self.id
+
+
+class CancelTicketRequest(models.Model):
+    pnr_no = models.CharField(max_length=200,primary_key=True)
+    amount = models.FloatField()

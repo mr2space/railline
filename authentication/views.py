@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from authentication.registration.login import loginLogic
 from authentication.registration.otp import otpLogic
 from authentication.registration.register import registerLogic
@@ -5,7 +6,7 @@ from authentication.models import userAddon_saving as userAddons
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
+from booking.models import PostPassangerData
 
 def userLogin(request):
     return loginLogic(request)
@@ -24,14 +25,14 @@ def profile(request):
         'LNav': 'active-nav',
     }
     Fullname = request.user.get_full_name()
-    print(request.user.id)
     try:
         profileAddons = userAddons.objects.get(user_name_id=request.user.id)
-        print(profileAddons.address)
+        bookingAddons = PostPassangerData.objects.all().filter(user_id=request.user.id).values()
     except:
         profileAddons = {}
-        print("Failed at profileAddon in Auth view")
-    return render(request,"./userProfile/profile.html",{"thisUserAddon":profileAddons,"navbar":navbar})
+    return render(request,"./userProfile/profile.html",{"thisUserAddon":profileAddons,"navbar":navbar,
+                                                        "bookingAddons":list(bookingAddons),
+                                                        })
 
 
 @login_required(login_url='/user/login')

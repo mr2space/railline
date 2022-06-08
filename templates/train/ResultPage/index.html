@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static 'TrainResultCss/style.css' %}">
     <link rel="stylesheet" href="{% static 'TrainResultCss/loader.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 {% endblock %}
 {% block title %}
 Result Page
@@ -44,4 +45,8 @@ Result Page
         </script>
         <script src="{% static 'TrainResultCss/trainQuery.js' %}"></script>
         <script src="{% static 'TrainResultCss/response.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+  AOS.init();
+</script>
 {% endblock %}

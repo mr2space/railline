@@ -42,15 +42,6 @@ My Account
               <span>downloads</span><i class="bi bi-cloud-arrow-down-fill"></i>
             </a>
           </li>
-          <li id="l4" onclick="changeMenu()">
-
-            <a href="#">
-              <span>Address</span><i class="bi bi-geo-alt-fill"></i></a>
-          </li>
-          <li id="l5" onclick="changeMenu()">
-            <a href="#">
-              <span>Account Details</span><i class="bi bi-person-lines-fill"></i></a>
-          </li>
           <li id="l6" onclick="/user/logout">
             <a href="/user/logout" style="width:100%">
               <span>Logout</span><i class="bi bi-box-arrow-right"></i></a>
@@ -116,45 +107,17 @@ My Account
       <div class="user-page user hidden flex" id="orders">
         <div class="user-info">
           <h3>Orders</h3>
-          <p class="center">List Of ticket orders</p>
+          <p class="center">List of ticket orders</p>
           <ol class="list-box">
+            {% for ticket in bookingAddons %}
             <li>
-              <a href="#">
-                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
+                <span>PNR - {{ticket.payment_id}}</span>  <span><a href="/booking/ticket_cancel/{{ticket.payment_id}}">Cancel </a></span><i class="bi bi-cloud-arrow-down-fill"></i>
             </li>
-            <li>
-              <a href="#">
-                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
-            </li>
-            <li>
-              <a href="#">
-                <span>ticket</span><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
-            </li>
+            {% endfor %}
           </ol>
         </div>
       </div>
 
-      <div class="user-page user" id="address">
-        <div class="user-info">
-          <h3>Your Address</h3>
-          <form action="" method="post">
-            {% csrf_token %}
-            <div class="input-box">
-              <span class="input-heading">
-                Address
-              </span> <br>
-              <!-- <input type="text"> -->
-            </div>
-            <!-- <div class="input-box">
-              <span class="input-heading">
-                Address 2
-              </span> <br>
-              <input type="text">
-            </div> -->
-
-
-            <button type="submit">Save Changes</button>
-          </form>
 
 
         </div>

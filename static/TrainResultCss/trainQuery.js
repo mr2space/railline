@@ -16,7 +16,7 @@ function divSeatBLackBox(trainObj, price_list, seat_type) {
                         <div class="seat-name">${seat_type.substring(5,7)}</div>
                         <div class="price">${parseFloat(price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)).toFixed(2) }</div>
                     </div>
-                    <div class=${seatSuccesFail(trainObj[0][seat_type])}>Available <span>${trainObj[0][seat_type]}</span> </div>
+                    <div class="${seatSuccesFail(trainObj[0][seat_type])}">Available <span>${trainObj[0][seat_type]}</span> </div>
                 </div>`
     return inner_HTML_text;
 }
@@ -62,7 +62,7 @@ function individualSetDiv(trainObj,price_list){
     ]
     let temp = iterationDivSeatBlackBox(seat_set, trainObj, price_list)
     let detail_temp = iterationBookingDataDetail(seat_set, trainObj, price_list)
-    let inner_HTML_text =`<div class="individual-set">
+    let inner_HTML_text =`<div class="individual-set" data-aos="fade-up">
         <h3>${trainObj[0].Train_No}</h3>
         <div class="timing-box"><span>${trainObj[0].Arrival_time} </span>${trainObj[0].Station_Code}--- <span>${trainObj[1].Arrival_time} </span>${trainObj[1].Station_Code}</div>
         <div class="seat-type">
