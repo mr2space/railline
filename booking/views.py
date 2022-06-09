@@ -2,8 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import PrePassangerData,PostPassangerData
+from .models import PrePassangerData,PostPassangerData,CancelTicketRequest
+from train.models import trainRecord
 from train import models as trainModel
+from django.db.models import F
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from railline.settings import STRIPE_SECRET_KEY, STRIPE_PUBLIC_KEY,STRIPE_WEBHOOK_KEY
@@ -90,14 +92,12 @@ def paymentPreProcess(request):
         success_url='http://127.0.0.1:8000/booking/success',
         cancel_url='http://127.0.0.1:8000/booking/cancel',
     )
-    print(checkout_session.url)
     return redirect(checkout_session.url, code=303)
 
     
 @login_required(login_url='/user/login')
 def storePrePayment(request):
     try:
-        print(request.POST.get('train_id'),list(request))
         savingData = PrePassangerData(
             user_id=request.user,
             personal_full_name=request.POST.get("full_name"),
@@ -162,11 +162,10 @@ def fulfill_order(session):
     try:
         prePaymentInfo = PrePassangerData.objects.get(id=product_id);
         prePaymentInfo = list(prePaymentInfo)[0]
-        print(prePaymentInfo)
     except:
         print("not found pre payment data!")
     try:
-        postPaymentModel = PostPassangerData(
+        post_payment_model = PostPassangerData(
             user_id=prePaymentInfo.user_id,
             personal_full_name=prePaymentInfo.personal_full_name,
             personal_age=prePaymentInfo.personal_age,
@@ -181,7 +180,26 @@ def fulfill_order(session):
             destination=prePaymentInfo.destination,
             date=prePaymentInfo.date,
         )
-        postPaymentModel.save()
+        post_payment_model.save()
+        if prePaymentInfo.seat_type == 'Seat_1A':
+            value = trainRecord.objects.get(
+                id=prePaymentInfo.train_id).update(Seat_1A=F('Seat_1A')-prePaymentInfo.seat_total_count)
+            value.save()
+        elif prePaymentInfo.seat_type == 'Seat_2A':
+            value = trainRecord.objects.get(
+                id=prePaymentInfo.train_id).update(Seat_2A=F('Seat_2A')-prePaymentInfo.seat_total_count)
+            value.save()
+        elif prePaymentInfo.seat_type == 'Seat_3A':
+            value = trainRecord.objects.get(
+                id=prePaymentInfo.train_id).update(Seat_1A=F('Seat_3A')-prePaymentInfo.seat_total_count)
+            value.save()
+        elif prePaymentInfo.seat_type == 'Seat_SL':
+            value = trainRecord.objects.get(
+                id=prePaymentInfo.train_id).update(Seat_SL=F('Seat_SL')-prePaymentInfo.seat_total_count)
+            print(value,prePaymentInfo.seat_type)
+            print("hey there")
+            value.save()
+        
     except Exception as e:
         print("error ay storing the postPayment",e)
 
@@ -194,7 +212,6 @@ def userBill(request):
         payment_id=post_payment_model.payment_id).values()
     param = {}
     param['detailed_list'] = list(post_payment_model)[0]
-    print(param)
     param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
     return render(request,"booking/ticket-pdf.html",param)
 
@@ -206,12 +223,10 @@ def pnrQuery(request):
     try:
         user_id = request.user
         pnr_value = request.POST.get("pnr-box")
-        print(pnr_value)
         post_payment_model = PostPassangerData.objects.all().filter(
             payment_id=pnr_value).values()
         
         param['detailed_list'] = list(post_payment_model)[0]
-        print(param)
         param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
         return render(request, "booking/ticket-pdf.html", param)
     except Exception as e:
@@ -222,5 +237,23 @@ def pnrQuery(request):
             "body": "Check your pnr"
         }
         param['msg'] = msg
-        print(param)
         return render(request,'index.html',param)
+
+
+def ticketCancel(request,payment_id):
+    try:
+        ticket = PostPassangerData.objects.get(
+            user_id=request.user, payment_id=payment_id)
+        amount = ticket.seat_price * ticket.seat_total_count
+        pnr_no = ticket.payment_id
+        request_payment = CancelTicketRequest(
+            pnr_no=pnr_no,
+            amount=amount,
+        )
+        request_payment.save()
+        PostPassangerData.objects.get(
+            user_id=request.user, payment_id=payment_id).delete()
+        return HttpResponse("all set to go")
+    except Exception as e:
+        print(f"ticket_not found! {e} ")
+    return HttpResponse("all set to not go")

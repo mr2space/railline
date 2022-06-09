@@ -16,7 +16,7 @@ function divSeatBLackBox(trainObj, price_list, seat_type) {
                         <div class="seat-name">${seat_type.substring(5,7)}</div>
                         <div class="price">${parseFloat(price_list[0][seat_type] * (trainObj[1].Distance - trainObj[0].Distance)).toFixed(2) }</div>
                     </div>
-                    <div class="${seatSuccesFail(trainObj[0][seat_type])}">Available <span>${trainObj[0][seat_type]}</span> </div>
+                    <div class="${seatSuccesFail(trainObj[0][seat_type])}">Available <span>${trainObj[0][seat_type]}</span></div>
                 </div>`
     return inner_HTML_text;
 }

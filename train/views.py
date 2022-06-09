@@ -30,7 +30,6 @@ def trainResultPage(request):
     train_date = datetime.datetime.strptime(request.POST.get(
         'travel_date')[2:], '%y-%m-%d')
     next_date =datetime.datetime.today() + datetime.timedelta(days=1)
-    print(train_date.strftime("%Y/%m/%d"), "helllo")
     navbar = {
         'HNav': 'active-nav'
     }
