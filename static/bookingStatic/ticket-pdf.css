@@ -33,13 +33,7 @@ h3{
     top: 0;
     width:100vw;
     height:100vh;
-    background: rgb(7,208,160);
-    background: linear-gradient(315deg, rgba(7,208,160,1) 0%, rgba(0,20,130,1) 89%);
-    animation-name: hsl-rotate;
-    animation-duration:7s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction:alternate;
+    background-color: var(--white);
     z-index: -1;
 }
 
