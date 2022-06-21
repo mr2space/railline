@@ -160,7 +160,7 @@ EMAIL_USE_TLS = True
 
 #----------- WARNING !!!! DO NOT DISCLOSE ----------------------------
 EMAIL_HOST_USER = 'mrspace.pro@gmail.com'
-EMAIL_HOST_PASSWORD = '0rail0line0!'
+EMAIL_HOST_PASSWORD = 'rptipdvxirltrrsc'
 
 
 
