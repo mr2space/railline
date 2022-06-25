@@ -153,14 +153,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images')
 LOGIN_REDIRECT_URL = 'index'
 
 
+from dotenv import load_dotenv
+load_dotenv()
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 #----------- WARNING !!!! DO NOT DISCLOSE ----------------------------
-EMAIL_HOST_USER = 'mrspace.pro@gmail.com'
-EMAIL_HOST_PASSWORD = 'rptipdvxirltrrsc'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD_WINDOWS')
+
 
 
 
@@ -175,8 +180,6 @@ EMAIL_HOST_PASSWORD = 'rptipdvxirltrrsc'
 
 # ----------------------SENSITIVE DATA !!! DO NOT DISCLOSE --------------------
 
-STRIPE_SECRET_KEY = 'sk_test_51KzBjHSJFnoDM4GlXXGa7rFQ5DILd2iKlvzArDbgGOyJPey7zQEK6hltpzCiahiJ1WM3Fa3ddyYnGoAJ4jNkmwbu00n2ur6mGV'
-
-STRIPE_PUBLIC_KEY = 'pk_test_51KzBjHSJFnoDM4Gl4GVhmYJmDZ1U41dmN0U0QfQ45qLPdNTwabAqxGSfPO4O2UBpt07Mpw3SaVRvv4umRgDZgLT200haNu7j0F'
-
-STRIPE_WEBHOOK_KEY = "whsec_172907c9261e97d8749840821044a5afa3b459a61b64099c0a6946cbeea5acb6"
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_WEBHOOK_KEY = os.getenv('STRIPE_WEBHOOK_KEY')

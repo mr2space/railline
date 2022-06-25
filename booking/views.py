@@ -223,9 +223,10 @@ def pnrQuery(request):
     try:
         user_id = request.user
         pnr_value = request.POST.get("pnr-box")
+        print(pnr_value)
         post_payment_model = PostPassangerData.objects.all().filter(
-            payment_id=pnr_value).values()
-        
+            payment_id=pnr_value.strip()).values()
+        print(list(post_payment_model))
         param['detailed_list'] = list(post_payment_model)[0]
         param["total_price"] = param['detailed_list']['seat_total_count'] * param['detailed_list']['seat_price']
         return render(request, "booking/ticket-pdf.html", param)
@@ -253,7 +254,7 @@ def ticketCancel(request,payment_id):
         request_payment.save()
         PostPassangerData.objects.get(
             user_id=request.user, payment_id=payment_id).delete()
-        return HttpResponse("all set to go")
+        return render(request, 'booking/ticket_cancel.html')
     except Exception as e:
         print(f"ticket_not found! {e} ")
-    return HttpResponse("all set to not go")
+    return render(request,'booking/ticket_cancel.html')
