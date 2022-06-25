@@ -7,3 +7,4 @@ authentication/migrations/*
 authentication/__pycache__/*
 train/migrations/*
 train/__pycache__/*
+.env
